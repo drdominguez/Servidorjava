@@ -42,7 +42,7 @@ public class ServiceThread extends Thread {
 					if(!uuid.equals(null)) {
 						System.out.println("1");
 						System.out.println("peta aquiiiiiiiiiiiiiiii");
-						String contenido = HybridServer.pages.getPage(getName());
+						String contenido = HybridServer.pages.getPage(uuid);
 						System.out.println("peta aquiiiiiiiiiiiiiiii");
 						if(contenido.equals("")) {
 							response.setStatus(HTTPResponseStatus.S404);
