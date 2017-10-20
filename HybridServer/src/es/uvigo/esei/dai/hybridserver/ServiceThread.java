@@ -39,26 +39,32 @@ public class ServiceThread extends Thread {
 			case "html":
 				if(request.getMethod().equals(HTTPRequestMethod.GET)) {
 					String uuid=request.getResourceParameters().get("uuid");
-					if(uuid != null) {
-						String contenido = HybridServer.pages.getPage(uuid);
-						if(contenido ==  null) {
+					if(!uuid.equals(null)) {
+						System.out.println("1");
+						System.out.println("peta aquiiiiiiiiiiiiiiii");
+						String contenido = HybridServer.pages.getPage(getName());
+						System.out.println("peta aquiiiiiiiiiiiiiiii");
+						if(contenido.equals("")) {
 							response.setStatus(HTTPResponseStatus.S404);
 						}else {
+							System.out.println("2");
 							response.setStatus(HTTPResponseStatus.S200);
 							response.setContent(contenido);
 						}
 					}else {
+						System.out.println("3");
 						response.setStatus(HTTPResponseStatus.S200);
 						response.setContent("Hybrid Server");
 					}
 					
 				}
 				if(request.getMethod().equals(HTTPRequestMethod.POST)) {
-					
+					System.out.println("4");
 					response.setStatus(HTTPResponseStatus.S201);
 					response.setContent("");
 				}
 				if(request.getMethod().equals(HTTPRequestMethod.DELETE)) {
+					System.out.println("5");
 					response.setStatus(HTTPResponseStatus.S200);
 					response.setContent("");
 				}
