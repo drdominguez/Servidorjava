@@ -16,7 +16,7 @@ public class HTMLDAOMap implements HTMLDAO {
 	public List<String> listPages() {
 		Iterator it = pages.entrySet().iterator();
 		List<String> lista = new ArrayList<String>();
-		pages.forEach((k,v) -> lista.add(k));
+		pages.forEach((k,v) -> lista.add(v));
 		return lista;
 	}
 

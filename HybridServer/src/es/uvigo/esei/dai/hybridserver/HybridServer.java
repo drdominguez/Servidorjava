@@ -62,6 +62,11 @@ public class HybridServer {
 		
 		this.stop = false;
 		this.serverThread.start();
+		try {
+			Thread.sleep(50);
+			} catch (InterruptedException ex) {
+			// aquí tratamos la excepción como queramos, haciendo nada, sacando por pantalla el error, ...
+			}
 	}
 
 	public void stop() {
