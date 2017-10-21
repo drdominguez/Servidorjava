@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Iterator;
+=======
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,12 +74,16 @@ public class HTTPResponse {
 	}
 
 	public List<String> listParameters() {
+<<<<<<< HEAD
 //		Iterator it = parameters.entrySet().iterator();
 //		List <String>lista=new ArrayList<String>();
 //		while(it.hasNext()) {
 //			lista.add(it.next().toString());
 //		}
 //		return lista;
+=======
+		// TODO Auto-generated method stub
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 		return null;
 	}
 

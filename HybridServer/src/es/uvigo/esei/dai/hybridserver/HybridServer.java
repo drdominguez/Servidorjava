@@ -39,10 +39,17 @@ public class HybridServer {
 	public int getPort() {
 		return SERVICE_PORT;
 	}
+<<<<<<< HEAD
 	public void start() {
 		ExecutorService threadPool = Executors.newFixedThreadPool(50);
 		
 		
+=======
+
+	public void start() {
+		ExecutorService threadPool = Executors.newFixedThreadPool(50);
+		
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 		this.serverThread = new Thread() {
 			@Override
 			public void run() {
@@ -59,7 +66,11 @@ public class HybridServer {
 				}
 			}
 		};
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 		this.stop = false;
 		this.serverThread.start();
 	}

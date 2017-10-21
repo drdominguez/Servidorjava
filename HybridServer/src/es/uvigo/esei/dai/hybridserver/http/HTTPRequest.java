@@ -52,6 +52,16 @@ public class HTTPRequest {
 		
 		
 		
+<<<<<<< HEAD
+=======
+		//Manera de sacar el nombre
+		// String[] interrogantearray = chain.split("?");
+		// name = interrogantearray[0];
+		
+		
+		
+		
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 		
 		
 		
@@ -95,6 +105,7 @@ public class HTTPRequest {
 			
 			 
 			String[] cadenas = (cadena.split("&"));
+<<<<<<< HEAD
 			int igual;
 			String cadena1;
 			String cadena2;
@@ -117,6 +128,29 @@ public class HTTPRequest {
 				
 			i++;
 		}
+=======
+
+			// Obtenemos los valores a introducir en el mapa
+			int igual = cadenas[0].indexOf("=");// posicion donde esta el interrogante
+			String cadena1 = cadenas[0].substring(0, igual);
+			String cadena2 = cadenas[0].substring(igual + 1);
+			
+			if (cadenas.length > 1) {
+				igual = cadenas[1].indexOf("=");// posicion donde esta el interrogante
+				if (igual > -1) {
+					String cadena3 = cadenas[1].substring(0, igual);
+					String cadena4 = cadenas[1].substring(igual + 1);
+					igual = cadenas[2].indexOf("=");// posicion donde esta el interrogante
+					String cadena5 = cadenas[2].substring(0, igual);
+					String cadena6 = cadenas[2].substring(igual + 1);
+					
+					// Introducimos los valores en el mapa
+					mapa.put(cadena1, cadena2);
+					mapa.put(cadena3, cadena4);
+					mapa.put(cadena5, cadena6);
+				}
+			}
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 		}
 		// Buscamos la versión
 

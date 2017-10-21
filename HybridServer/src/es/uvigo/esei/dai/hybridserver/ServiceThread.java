@@ -39,25 +39,51 @@ public class ServiceThread extends Thread {
 			case "html":
 				if(request.getMethod().equals(HTTPRequestMethod.GET)) {
 					String uuid=request.getResourceParameters().get("uuid");
+<<<<<<< HEAD
 					String contenido = HybridServer.pages.getPage(uuid);
 					if(uuid != null) {
 						if(contenido==null) {
 							response.setStatus(HTTPResponseStatus.S404);
 						}else {
+=======
+					if(!uuid.equals(null)) {
+						System.out.println("1");
+						System.out.println("peta aquiiiiiiiiiiiiiiii");
+						String contenido = HybridServer.pages.getPage(uuid);
+						System.out.println("peta aquiiiiiiiiiiiiiiii");
+						if(contenido.equals("")) {
+							response.setStatus(HTTPResponseStatus.S404);
+						}else {
+							System.out.println("2");
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 							response.setStatus(HTTPResponseStatus.S200);
 							response.setContent(contenido);
 						}
 					}else {
+<<<<<<< HEAD
 						response.setStatus(HTTPResponseStatus.S200);
 						response.setContent(HybridServer.pages.getPage(contenido));
+=======
+						System.out.println("3");
+						response.setStatus(HTTPResponseStatus.S200);
+						response.setContent("Hybrid Server");
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 					}
 					
 				}
 				if(request.getMethod().equals(HTTPRequestMethod.POST)) {
+<<<<<<< HEAD
+=======
+					System.out.println("4");
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 					response.setStatus(HTTPResponseStatus.S201);
 					response.setContent("");
 				}
 				if(request.getMethod().equals(HTTPRequestMethod.DELETE)) {
+<<<<<<< HEAD
+=======
+					System.out.println("5");
+>>>>>>> 44100a54b78e89c2337e5ae1b5704f17197a7c57
 					response.setStatus(HTTPResponseStatus.S200);
 					response.setContent("");
 				}
