@@ -71,12 +71,6 @@ public class HTTPResponse {
 	}
 
 	public List<String> listParameters() {
-//		Iterator it = parameters.entrySet().iterator();
-//		List <String>lista=new ArrayList<String>();
-//		while(it.hasNext()) {
-//			lista.add(it.next().toString());
-//		}
-//		return lista;
 		return null;
 	}
 
