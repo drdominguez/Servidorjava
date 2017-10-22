@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
 import es.uvigo.esei.dai.hybridserver.http.HTTPParseException;
 import es.uvigo.esei.dai.hybridserver.http.HTTPRequest;
 import es.uvigo.esei.dai.hybridserver.http.HTTPRequestMethod;
@@ -33,7 +32,7 @@ public class ServiceThread extends Thread {
 			switch (request.getResourceName()) {
 			case "":
 				response.setStatus(HTTPResponseStatus.S200);
-				response.setContent("Hybrid Server + number");
+				response.setContent("Hybrid Server Alberte Pazos Martínez Daniel Rodríguez Domínguez");
 				break;
 			case "html":
 				if (request.getMethod().equals(HTTPRequestMethod.GET)) {
@@ -48,16 +47,13 @@ public class ServiceThread extends Thread {
 							response.setContent(contenido);
 						}
 					} else {
-
 						response.setStatus(HTTPResponseStatus.S200);
 						response.setContent(HybridServer.pages.listPages().toString());
-
 					}
 
 				}
 				if (request.getMethod().equals(HTTPRequestMethod.POST)) {
 					String uuid = request.getHeaderParameters().get("uuid");
-					String contenido = HybridServer.pages.getPage(uuid);
 					if (uuid == null) {
 						String solucion = request.getContent().substring(0, request.getContent().indexOf("="));
 						if (!solucion.equals("html")) {
@@ -73,19 +69,9 @@ public class ServiceThread extends Thread {
 							HybridServer.pages.addPage(uuid, contenidoigual[1]);
 							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
 							response.setContent(uuidHyperlink);
-							//System.out.println("Soilucion: " + request.getContent());
 							response.setStatus(HTTPResponseStatus.S200);
-
 						}
-
-					} //else {
-//						if (contenido.equals(uuid)) {
-//							System.out.println("******");
-//							response.setStatus(HTTPResponseStatus.S404);
-//						} else
-//							System.out.println("!!!!!!!!!!");
-//							response.setStatus(HTTPResponseStatus.S201);
-//					}
+					} 
 				}
 				if (request.getMethod().equals(HTTPRequestMethod.DELETE)) {
 					String uuid = request.getResourceParameters().get("uuid");

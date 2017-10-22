@@ -1,7 +1,6 @@
 package es.uvigo.esei.dai.hybridserver;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,9 +13,8 @@ public class HTMLDAOMap implements HTMLDAO {
 
 	@Override
 	public List<String> listPages() {
-		Iterator it = pages.entrySet().iterator();
 		List<String> lista = new ArrayList<String>();
-		pages.forEach((k,v) -> lista.add(v));
+		pages.forEach((k,v) -> lista.add(k));
 		return lista;
 	}
 

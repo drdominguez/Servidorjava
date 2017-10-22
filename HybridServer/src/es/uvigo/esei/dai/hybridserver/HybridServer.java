@@ -1,39 +1,38 @@
 package es.uvigo.esei.dai.hybridserver;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import es.uvigo.esei.dai.hybridserver.http.HTTPHeaders;
-import es.uvigo.esei.dai.hybridserver.http.HTTPParseException;
-import es.uvigo.esei.dai.hybridserver.http.HTTPRequest;
-import es.uvigo.esei.dai.hybridserver.http.HTTPResponse;
-import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
 
 public class HybridServer {
 	private static final int SERVICE_PORT = 8888;
 	private Thread serverThread;
 	private boolean stop;
 	protected static HTMLDAO pages;
+	private static Properties propiedades;
+	
 
 	public HybridServer(){
 		
 	}
 
 	public HybridServer(Map<String, String> pages) {
-		this.pages= new HTMLDAOMap(pages);
+		HybridServer.pages= new HTMLDAOMap(pages);
 	}
 
-	public HybridServer(Properties properties) {
-		// TODO Auto-generated constructor stub
+	public HybridServer(Properties properties) throws SQLException {
+		//this(Properties.fromProperties(propiedades));
+		this.propiedades=properties;
+		System.out.println(propiedades);
+		DBService dbServer=new DBService (properties);
+		dbServer.start();
+		new HTMLDAODB(dbServer);
 	}
 
 	public int getPort() {
@@ -41,7 +40,6 @@ public class HybridServer {
 	}
 	public void start() {
 		ExecutorService threadPool = Executors.newFixedThreadPool(50);
-		
 		
 		this.serverThread = new Thread() {
 			@Override
@@ -62,11 +60,6 @@ public class HybridServer {
 		
 		this.stop = false;
 		this.serverThread.start();
-		try {
-			Thread.sleep(50);
-			} catch (InterruptedException ex) {
-			// aquí tratamos la excepción como queramos, haciendo nada, sacando por pantalla el error, ...
-			}
 	}
 
 	public void stop() {

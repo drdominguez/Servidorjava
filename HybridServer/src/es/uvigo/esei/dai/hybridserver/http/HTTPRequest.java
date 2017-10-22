@@ -29,6 +29,7 @@ public class HTTPRequest {
 
 		// Buscamos getMethod()
 		String[] espacio = (linea.split(" "));
+
 		if (espacio[0].equals("")) {
 			throw new HTTPParseException();
 		}
@@ -38,40 +39,35 @@ public class HTTPRequest {
 				&& !espacio[0].equals("CONNECT") && !espacio[0].equals("DELETE")) {
 			throw new HTTPParseException();
 		}
-		get = HTTPRequestMethod.valueOf(espacio[0]);
-		if(espacio.length>2)
-		chain = espacio[1];
-		else if(espacio.length>1 &&!espacio[1].equals("HTTP/1.1")) {
-			chain=espacio[1];
-		}
-		else {
-		chain="";
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		String path1;
 
+		get = HTTPRequestMethod.valueOf(espacio[0]);
+
+		// Buscamos chain
+		if (espacio.length > 2)
+			chain = espacio[1];
+		else if (espacio.length > 1 && !espacio[1].equals("HTTP/1.1")) {
+			chain = espacio[1];
+		} else {
+			chain = "";
+		}
+
+		// Buscamos name
+		String path1;
 		int interrogante = chain.indexOf("?");// posicion donde esta el interrogante
 		// Mira si no hay un interrogante, si no lo hay ponemos el path y el nombre es
 		// igual a lo que contiene chain menos la primera barra
-		
-		
+
 		if (interrogante == -1) {
-			if(chain.length()<2) {
-				path1="";
+			if (chain.length() < 2) {
+				path1 = "";
+			} else {
+				path1 = chain.substring(1);
 			}
-			else {
-			 path1= chain.substring(1);
-			}
+			// Obtenemos name
 			name = path1;
 			int path2 = path1.indexOf("/");
 
+			// Obtenemos path
 			if (path2 != -1) {//
 				path = new String[] { path1.substring(0, path2).toString(), path1.substring(path2 + 1).toString() };
 			} else if (name.equals("") && (path2 == -1)) {
@@ -79,57 +75,50 @@ public class HTTPRequest {
 			} else if (!name.equals("") && (path2 == -1)) {
 				path = new String[] { name.toString() };
 			}
-
 		} else {
 			String antes = chain.substring(0, interrogante);// subcadena desde la posicion 0 hasta el interrogante
 			String[] barra = antes.split("/");
-			String[] espacio2 = (antes.split(" "));
-			name = chain.substring(1,interrogante);
+			name = chain.substring(1, interrogante);
 			if (barra.length > 2) {
 				path = new String[] { barra[1].toString(), barra[2].toString() };
 			} else
 				path = new String[] { barra[1].toString() };
 
-			
-			String cadena = chain.substring(interrogante+1);
-			
-			 
+			String cadena = chain.substring(interrogante + 1);
 			String[] cadenas = (cadena.split("&"));
 			int igual;
 			String cadena1;
 			String cadena2;
-			int i =0;
-			if(cadenas.length==0) {
-				String uuid=chain.substring(interrogante+1);
-				String [] uid=uuid.split("=");
+			int i = 0;
+			if (cadenas.length == 0) {
+				String uuid = chain.substring(interrogante + 1);
+				String[] uid = uuid.split("=");
 				mapa.put(uid[1], uid[2]);
 			}
-			while(cadenas.length>i) {
-			// Obtenemos los valores a introducir en el mapa
-			 igual = cadenas[i].indexOf("=");// posicion donde esta el interrogante
-			cadena1 = cadenas[i].substring(0, igual);
-			cadena2 = cadenas[i].substring(igual + 1);
-			
-		
-					// Introducimos los valores en el mapa
-					mapa.put(cadena1, cadena2);
-					
-				
-			i++;
-		}
+			while (cadenas.length > i) {
+
+				// Obtenemos los valores a introducir en el mapa
+				igual = cadenas[i].indexOf("=");// posicion donde esta el interrogante
+				cadena1 = cadenas[i].substring(0, igual);
+				cadena2 = cadenas[i].substring(igual + 1);
+
+				// Introducimos los valores en el mapa
+				mapa.put(cadena1, cadena2);
+				i++;
+			}
 		}
 		// Buscamos la versión
 
 		if (espacio.length > 2) {
 			String string = espacio[2];
 			version = string;
-		} 
-		else
+		} else
 			throw new HTTPParseException();
 		int puntos;
+
 		if (linea != "") {
 			while (!(linea = bufferedreader.readLine()).equals("")) {
-				if(linea.equals(null)) {
+				if (linea.equals(null)) {
 					throw new HTTPParseException();
 				}
 				puntos = linea.indexOf(":");
@@ -143,32 +132,31 @@ public class HTTPRequest {
 			}
 			String tamaño;
 			// Calculamos length y contentlength
+
 			if (mapacontiene.containsKey("Content-Length")) {
 				tamaño = mapacontiene.get("Content-Length");
 				length = Integer.parseInt(tamaño);
 				char[] caracteres = new char[length];
 				bufferedreader.read(caracteres);
 				content = new String(caracteres);
-
 				String type = mapacontiene.get("Content-Type");
+
 				if (type != null && type.startsWith("application/x-www-form-urlencoded")) {
 					content = URLDecoder.decode(content, "UTF-8");
 				}
-				// Buscamos ResourcePArameters
 
+				// Buscamos ResourcePArameters
 				int posicionamp;
 				String respuesta;
-				String queda;
-				int amp2;
 				respuesta = content;
 				int igual = 0;
+
 				while ((igual = respuesta.indexOf("=")) != -1) {
 					posicionamp = respuesta.indexOf("&");
 					if (posicionamp == -1) {
 						mapa.put(respuesta.substring(0, igual), respuesta.substring(igual + 1));
 						respuesta = "Se acabo";
 					} else {
-
 						mapa.put(respuesta.substring(0, igual), respuesta.substring(igual + 1, posicionamp));
 						respuesta = respuesta.substring(posicionamp + 1);
 					}

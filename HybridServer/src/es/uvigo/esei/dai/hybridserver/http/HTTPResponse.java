@@ -3,8 +3,6 @@ package es.uvigo.esei.dai.hybridserver.http;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +12,7 @@ public class HTTPResponse {
 	private HTTPResponseStatus get;
 	private String content = "";
 	private Map<String, String> parameters = new LinkedHashMap<String, String>();
-	private String putparameter = "";
-	private String delparameter = "";
-	private List<String> lista = new ArrayList<String>();
+
 
 	public HTTPResponse() {
 		this.version = HTTPHeaders.HTTP_1_1.getHeader();
@@ -67,7 +63,7 @@ public class HTTPResponse {
 	}
 
 	public void clearParameters() {
-		parameters.remove(parameters.values());
+		parameters.clear();
 	}
 
 	public List<String> listParameters() {

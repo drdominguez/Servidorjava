@@ -1,19 +1,22 @@
 package es.uvigo.esei.dai.hybridserver;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
 public class Launcher {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		HybridServer server= null;
 		if(args.length != 0) {
 			try {
 				FileReader filereader = new FileReader(args[0]);
 				Properties propiedades = new Properties();
 				propiedades.load(filereader);
+				System.out.println(propiedades);
 				server = new HybridServer(propiedades);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
