@@ -19,6 +19,7 @@ public class HTMLDAODB implements HTMLDAO {
 	String pass;
 	String url;
 	private static final String tabla="HTML";
+	private List <String> list;
 	public HTMLDAODB(Properties properties) {
 		
 		
@@ -48,42 +49,35 @@ public class HTMLDAODB implements HTMLDAO {
 	@Override
 	public List<String> listPages() {
 		this.MySQLConnection(this.user, this.pass, this.url);
-		List <String> list = new ArrayList();
-		list=null;
+		List list = new ArrayList();
         try {
             String Query = "SELECT * FROM " + tabla;
             Statement st = Conexion.createStatement();
             java.sql.ResultSet resultSet;
             resultSet = st.executeQuery(Query);
- 
             while (resultSet.next()) {
-            	
-            	list.add(resultSet.getString("uuid"));
-                     
+                list.add(resultSet.getString("uuid")); 
+                
             }
- 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la adquisición de datos");
-        }
+        } catch (SQLException ex) { }
         this.closeConnection();
-        return list;
+        return list; 
 	}
 
 	@Override
 	public boolean addPage(String uuid, String content) {
-		boolean resultado=false;
+		boolean resultado;
 		this.MySQLConnection(this.user, this.pass, this.url);
 		try {
-            String Query = "INSERT INTO " + tabla + " VALUES("
-                    + "\"" + uuid + "\", "
-                    + "\"" + content + ")";
+			
+            String Query = "INSERT INTO HTML(uuid,content) VALUES("
+                     + uuid+","+ content +  ")";
+
                   
             Statement st = Conexion.createStatement();
             st.executeUpdate(Query);
-            JOptionPane.showMessageDialog(null, "Datos almacenados de forma exitosa");
            resultado=true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en el almacenamiento de datos");
            resultado=false;
         }
 		this.closeConnection();
@@ -101,7 +95,7 @@ public class HTMLDAODB implements HTMLDAO {
             resultado=true;
  
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error borrando el registro especificado");
+            
             resultado=false;
         }
 		this.closeConnection();
@@ -111,8 +105,21 @@ public class HTMLDAODB implements HTMLDAO {
 	@Override
 	public String getPage(String uuid) {
 		this.MySQLConnection(this.user, this.pass, this.url);
+		String resultado;
+		try {
+			String Query = "SELECT "+uuid+" FROM " + tabla;
+			 Statement st = Conexion.createStatement();
+	         java.sql.ResultSet resultSet;
+	            resultSet = st.executeQuery(Query);
+	            
+            resultado=resultSet.toString();
+ 
+        } catch (SQLException ex) {
+            
+           resultado=null;
+        }
 		this.closeConnection();
-	        return null;
+	        return resultado;
 	    }
 
 		

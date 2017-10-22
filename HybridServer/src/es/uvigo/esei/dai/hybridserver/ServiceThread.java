@@ -37,18 +37,28 @@ public class ServiceThread extends Thread {
 			case "html":
 				if (request.getMethod().equals(HTTPRequestMethod.GET)) {
 					String uuid = request.getResourceParameters().get("uuid");
-
-					String contenido = HybridServer.pages.getPage(uuid);
+					String contenido;
+					if (HybridServer.BD != null) {
+						contenido = HybridServer.BD.getPage(uuid);
+					} else {
+						contenido = HybridServer.pages.getPage(uuid);
+					}
 					if (uuid != null) {
 						if (contenido == null) {
 							response.setStatus(HTTPResponseStatus.S404);
 						} else {
-							response.setStatus(HTTPResponseStatus.S200);
 							response.setContent(contenido);
+							response.setStatus(HTTPResponseStatus.S200);
 						}
 					} else {
-						response.setStatus(HTTPResponseStatus.S200);
-						response.setContent(HybridServer.pages.listPages().toString());
+						if(HybridServer.BD == null) {
+							response.setContent(HybridServer.pages.listPages().toString());
+							response.setStatus(HTTPResponseStatus.S200);
+						}
+						else {
+							response.setContent(HybridServer.BD.listPages().toString());
+							response.setStatus(HTTPResponseStatus.S200);
+						}
 					}
 
 				}
@@ -60,32 +70,63 @@ public class ServiceThread extends Thread {
 							response.setStatus(HTTPResponseStatus.S400);
 						} else {
 							uuid = java.util.UUID.randomUUID().toString();
-							while(uuid == request.getResourceParameters().get("uuid")) {
+							while (uuid == request.getResourceParameters().get("uuid")) {
 								uuid = java.util.UUID.randomUUID().toString();
-								System.out.println("Mismo uuid");
 							}
-							String content =request.getContent();
-							String[] contenidoigual = content.split("=");
-							HybridServer.pages.addPage(uuid, contenidoigual[1]);
-							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
-							response.setContent(uuidHyperlink);
-							response.setStatus(HTTPResponseStatus.S200);
+							String content = request.getContent();
+							
+							if (HybridServer.BD != null) {
+								String[] contenidoigual = content.split("=");
+								if (HybridServer.BD.addPage(uuid, contenidoigual[1])) {
+									String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+									response.setContent(uuidHyperlink);
+									response.setStatus(HTTPResponseStatus.S200);
+								}
+								else {
+									
+									String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+									response.setContent(uuidHyperlink);
+									response.setStatus(HTTPResponseStatus.S200);
+								}
+							}else {
+								String[] contenidoigual = content.split("=");
+									HybridServer.pages.addPage(uuid, contenidoigual[1]);
+
+									String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+									response.setContent(uuidHyperlink);
+									response.setStatus(HTTPResponseStatus.S200);
+							}
 						}
-					} 
+					}else {
+						response.setStatus(HTTPResponseStatus.S200);
+					}
 				}
 				if (request.getMethod().equals(HTTPRequestMethod.DELETE)) {
 					String uuid = request.getResourceParameters().get("uuid");
-					String contenido = HybridServer.pages.getPage(uuid);
+					String contenido;
+					if (HybridServer.BD != null) {
+						contenido = HybridServer.BD.getPage(uuid);
+					} else {
+						contenido = HybridServer.pages.getPage(uuid);
+					}
 					if (uuid == null) {
 						response.setStatus(HTTPResponseStatus.S200);
 					} else {
 						if (contenido == null) {
-							response.setStatus(HTTPResponseStatus.S404);
+							HybridServer.BD.deletePage(uuid);
+							response.setStatus(HTTPResponseStatus.S200);
 						} else {
-							if (HybridServer.pages.deletePage(uuid)) {
-								response.setStatus(HTTPResponseStatus.S200);
-							} else
-								response.setStatus(HTTPResponseStatus.S404);
+							if (HybridServer.BD != null) {
+								if (HybridServer.BD.deletePage(uuid))
+									response.setStatus(HTTPResponseStatus.S200);
+								else
+									response.setStatus(HTTPResponseStatus.S404);
+							} else {
+								if (HybridServer.pages.deletePage(uuid)) {
+									response.setStatus(HTTPResponseStatus.S200);
+								} else
+									response.setStatus(HTTPResponseStatus.S404);
+							}
 						}
 					}
 				}

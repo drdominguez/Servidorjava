@@ -16,7 +16,7 @@ public class HybridServer {
 	private boolean stop;
 	protected static HTMLDAO pages;
 	private static Properties propiedades=null;
-	
+	protected static HTMLDAODB BD;
 
 	public HybridServer(){
 		
@@ -40,10 +40,9 @@ public class HybridServer {
 		this.serverThread = new Thread() {
 			@Override
 			public void run() {
-				if(!HybridServer.propiedades.equals(null)) {
-					new HTMLDAODB(propiedades);
+				if(HybridServer.propiedades!=null) {
+					BD=new HTMLDAODB(propiedades);
 					SERVICE_PORT=Integer.parseInt(propiedades.get("port").toString());
-					System.out.println(SERVICE_PORT);
 				}
 				try (final ServerSocket serverSocket = new ServerSocket(SERVICE_PORT)) {
 					while (true) {
