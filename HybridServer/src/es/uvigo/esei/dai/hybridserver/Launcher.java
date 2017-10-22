@@ -16,7 +16,7 @@ public class Launcher {
 				FileReader filereader = new FileReader(args[0]);
 				Properties propiedades = new Properties();
 				propiedades.load(filereader);
-				System.out.println(propiedades);
+				//System.out.println(propiedades);
 				server = new HybridServer(propiedades);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

@@ -11,11 +11,11 @@ import java.util.concurrent.Executors;
 
 
 public class HybridServer {
-	private static final int SERVICE_PORT = 8888;
+	private  int SERVICE_PORT = 8888;
 	private Thread serverThread;
 	private boolean stop;
 	protected static HTMLDAO pages;
-	private static Properties propiedades;
+	private static Properties propiedades=null;
 	
 
 	public HybridServer(){
@@ -27,12 +27,8 @@ public class HybridServer {
 	}
 
 	public HybridServer(Properties properties) throws SQLException {
-		//this(Properties.fromProperties(propiedades));
 		this.propiedades=properties;
-		System.out.println(propiedades);
-		DBService dbServer=new DBService (properties);
-		dbServer.start();
-		new HTMLDAODB(dbServer);
+		
 	}
 
 	public int getPort() {
@@ -44,6 +40,11 @@ public class HybridServer {
 		this.serverThread = new Thread() {
 			@Override
 			public void run() {
+				if(!HybridServer.propiedades.equals(null)) {
+					new HTMLDAODB(propiedades);
+					SERVICE_PORT=Integer.parseInt(propiedades.get("port").toString());
+					System.out.println(SERVICE_PORT);
+				}
 				try (final ServerSocket serverSocket = new ServerSocket(SERVICE_PORT)) {
 					while (true) {
 						Socket socket = serverSocket.accept();

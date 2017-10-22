@@ -18,21 +18,23 @@ public class DBService {
     	this.config = conf;
     	
     }
-
+    
     /**
      * Inicia el servicio Database
      */    
     public void start() throws SQLException {
     	System.out.println("*****************"+config.getProperty("db.url")+"*****************"+config.getProperty("db.user")+"*****************"+config.getProperty("db.password"));
     	if (this.connection == null) {
+    		System.out.println("If");
 	    	this.connection = DriverManager.getConnection(
-	    			config.getProperty("db.url"), 
-	    			config.getProperty("db.user"), 
-	    			config.getProperty("db.password") 
+	    			config.getProperty("db.url"),
+	    			config.getProperty("db.user"),
+	    			config.getProperty("db.password")
 	    		);
-
+	    	System.out.println("Entro: "+config.getProperty("db.user"));
 	    	
     	}
+    		System.out.println("Sale");
     	   		
     		log.log(Level.INFO, "Cliente DB iniciado. <" +this.config.getProperty("db.url") + ">");
     	

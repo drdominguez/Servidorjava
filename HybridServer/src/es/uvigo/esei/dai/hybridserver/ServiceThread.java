@@ -32,7 +32,7 @@ public class ServiceThread extends Thread {
 			switch (request.getResourceName()) {
 			case "":
 				response.setStatus(HTTPResponseStatus.S200);
-				response.setContent("Hybrid Server Alberte Pazos Martínez Daniel Rodríguez Domínguez");
+				response.setContent("Hybrid Server + Alberte Pazos Martinez y Daniel Rodríguez Domínguez");
 				break;
 			case "html":
 				if (request.getMethod().equals(HTTPRequestMethod.GET)) {
