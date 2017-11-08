@@ -1,5 +1,6 @@
 package es.uvigo.esei.dai.hybridserver;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ServerController {
@@ -14,7 +15,7 @@ public class ServerController {
 	public boolean deletePage(String uuid) {
 		return dao.deletePage(uuid);
 	}
-	public boolean addPage(String uuid, String content) {
+	public boolean addPage(String uuid, String content) throws SQLException {
 		return dao.addPage(uuid,content);
 	}
 	public String getPage(String uuid) {

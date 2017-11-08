@@ -14,43 +14,43 @@ public class HybridServer {
 	private  int SERVICE_PORT = 8888;
 	private Thread serverThread;
 	private boolean stop;
-	protected static HTMLDAO pages;
-	private static Properties propiedades=null;
-	protected static HTMLDAODB BD;
+	private HTMLDAO pages;
+	private int numClient=50;
 
 	public HybridServer(){
-		
+		numClient=50;
+		SERVICE_PORT = 8888;
+		pages=new HTMLDAODB("jdbc:mysql://localhost:3306/hstestdb", "hsdb", "hsdbpass");
 	}
 
 	public HybridServer(Map<String, String> pages) {
-		HybridServer.pages= new HTMLDAOMap(pages);
+		this.pages= new HTMLDAOMap(pages);
+		SERVICE_PORT = 8888;
+		numClient=50;
 	}
 
 	public HybridServer(Properties properties) throws SQLException {
-		this.propiedades=properties;
-		
+		numClient=Integer.parseInt(properties.get("numClients").toString());
+		SERVICE_PORT = Integer.parseInt(properties.get("port").toString());
+		pages=new HTMLDAODB(properties);
 	}
 
 	public int getPort() {
 		return SERVICE_PORT;
 	}
 	public void start() {
-		ExecutorService threadPool = Executors.newFixedThreadPool(50);
+		ExecutorService threadPool = Executors.newFixedThreadPool(numClient);
 		
 		this.serverThread = new Thread() {
 			@Override
 			public void run() {
-				if(HybridServer.propiedades!=null) {
-					BD=new HTMLDAODB(propiedades);
-					SERVICE_PORT=Integer.parseInt(propiedades.get("port").toString());
-				}
 				try (final ServerSocket serverSocket = new ServerSocket(SERVICE_PORT)) {
 					while (true) {
 						Socket socket = serverSocket.accept();
 						if (stop)
 							break;
-							
-						threadPool.execute(new ServiceThread(socket));
+		 					
+						threadPool.execute(new ServiceThread(socket, pages));
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
