@@ -12,9 +12,9 @@ public class HTMLDAOMap implements HTMLDAO {
 	}
 
 	@Override
-	public List<String> listPages() {
-		List<String> lista = new ArrayList<String>();
-		pages.forEach((k,v) -> lista.add(k));
+	public List<Pagina> listPages() {
+		List<Pagina> lista = new ArrayList<Pagina>();
+		pages.forEach((k,v) -> lista.add(new Pagina(k,this.pages.get(k))));
 		return lista;
 	}
 

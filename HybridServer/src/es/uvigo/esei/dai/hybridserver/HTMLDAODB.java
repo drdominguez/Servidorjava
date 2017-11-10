@@ -4,25 +4,25 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.xml.internal.txw2.Document;
+
 public class HTMLDAODB implements HTMLDAO {
 	private Connection Conexion;
-	String user;
-	String pass;
-	String url;
+	private String user;
+	private String pass;
+	private String url;
 	private String tabla = "HTML";
 
 	public HTMLDAODB(Properties properties) {
-
 		this.user = properties.getProperty("db.user");
 		this.pass = properties.getProperty("db.password");
 		this.url = properties.getProperty("db.url");
-
 	}
 	
 	public HTMLDAODB(String user, String pass, String url) {
@@ -30,8 +30,6 @@ public class HTMLDAODB implements HTMLDAO {
 		this.pass = pass;
 		this.url = url;
 	}
-
-
 
 	public void MySQLConnection(String user, String pass, String db_name) {
 		try {
@@ -50,21 +48,21 @@ public class HTMLDAODB implements HTMLDAO {
 	}
 
 	@Override
-	public List<String> listPages() {
+	public List<Pagina> listPages() {
 		this.MySQLConnection(this.user, this.pass, this.url);
-		List<String> list = new ArrayList<>();
+		List<Pagina> pagina = new LinkedList<Pagina>();
 		try {
 			String Query = "SELECT * FROM " + tabla;
 			Statement st = Conexion.createStatement();
 			java.sql.ResultSet resultSet;
 			resultSet = st.executeQuery(Query);
 			while (resultSet.next()) {
-				list.add(resultSet.getString("uuid"));
+				pagina.add(new Pagina(resultSet.getString("uuid"),resultSet.getString("content")));
 			}
 		} catch (SQLException ex) {
 		}
 		this.closeConnection();
-		return list;
+		return pagina;
 	}
 
 	@Override

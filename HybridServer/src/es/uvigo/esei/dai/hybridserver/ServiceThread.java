@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.List;
 import es.uvigo.esei.dai.hybridserver.http.HTTPParseException;
 import es.uvigo.esei.dai.hybridserver.http.HTTPRequest;
 import es.uvigo.esei.dai.hybridserver.http.HTTPRequestMethod;
@@ -17,6 +19,7 @@ public class ServiceThread extends Thread {
 	private HTMLDAO pages;
 	private BufferedReader reader;
 	private PrintWriter writer;
+	private HtmlController controler;
 
 	public ServiceThread(Socket socket, HTMLDAO pages) throws IOException {
 		this.socket = socket;
@@ -28,32 +31,51 @@ public class ServiceThread extends Thread {
 	public void run() {
 		try (Socket socket = this.socket) {
 			HTTPRequest request = new HTTPRequest(this.reader);
-
 			// Responder al cliente
 			HTTPResponse response = new HTTPResponse();
 
 			switch (request.getResourceName()) {
+			//Caso de ser Vacío
 			case "":
+				System.out.println("vacía");
+				String paginaInicial = "<head><meta charset=\"utf8\"></head>" + "<h1><b>Hybrid Server</b></h1>"
+						+ "<p>Alberte Pazos Martinez</p>" + "<p>Daniel Rodríguez Domínguez</p>";
+				String paginas = "<a href='html'>Lista de Páginas</a>  ";
+				response.setContent(paginaInicial + paginas);
 				response.setStatus(HTTPResponseStatus.S200);
-				response.setContent("Hybrid Server + Alberte Pazos Martinez y Daniel Rodríguez Domínguez");
 				break;
+			//Si el recurso es html
 			case "html":
 				System.out.println("html");
+				//Comprobamos que sea un GET
 				if (request.getMethod().equals(HTTPRequestMethod.GET)) {
 					String uuid = request.getResourceParameters().get("uuid");
 					String contenido = pages.getPage(uuid);
-					if (uuid != null) {
-						if (contenido == null) {
-							response.setStatus(HTTPResponseStatus.S404);
-						} else {
+					//Verificar que existan parámetros
+					if (!request.getResourceParameters().isEmpty()) {
+						//Se comprueba que tiene un uuid
+						if (uuid != null) {
+							System.out.println("Tiene uuid");
+							//Si teniendo uuid no tiene contenido
+							if (contenido == null) {
+								System.out.println("Tiene uuid pero no tiene contenido");
+								response.setStatus(HTTPResponseStatus.S404);
+								//Sii teniendo uuid tiene contenido
+							} else {
+							System.out.println("Tiene contenido y uuid");
 							response.setContent(contenido);
 							response.setStatus(HTTPResponseStatus.S200);
 						}
-					} else {
-						response.setContent("<a href=\"html?uuid=" + pages.listPages().toString() + "\">"
-								+ pages.listPages().toString() + "</a>");
-
+							//Si no tiene uuid
+						} else {
+							System.out.println("No tiene uuid");
+							response.setStatus(HTTPResponseStatus.S404);
+						}
+						//Si no tiene parámetros
+					}else {
 						response.setStatus(HTTPResponseStatus.S200);
+						System.out.println("No tiene parametros");
+						response.setContent(listarPaginas());
 					}
 
 				}
@@ -118,7 +140,30 @@ public class ServiceThread extends Thread {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	}
+
+	private String listarPaginas() throws Exception {
+		System.out.println("Entra145");
+		List<Pagina> paginas = this.controler.listPages();
+		Iterator<Pagina> it = paginas.iterator();
+		String identificador = "<h1><b>Servidor Local</b></h1>";
+		if (!paginas.isEmpty()) {
+			identificador += "<ul>";
+			while (it.hasNext()) {
+				Pagina itpagina = it.next();
+				identificador += "<li><a href='html?uuid=" + itpagina.getUuid() + "'>" + itpagina.getUuid()
+						+ "</a></li>";
+			}
+			identificador += "</ul>";
+		} else {
+			identificador += "El servidor esta vacío";
+		}
+		System.out.println("Identificador: "+identificador);
+		return identificador;
 	}
 
 }
