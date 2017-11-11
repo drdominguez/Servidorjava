@@ -28,6 +28,8 @@ public class HTTPRequest {
 		linea = bufferedreader.readLine();
 
 		// Buscamos getMethod()
+		//linea.indexOf(" ");
+		
 		String[] espacio = (linea.split(" "));
 
 		if (espacio[0].equals("")) {

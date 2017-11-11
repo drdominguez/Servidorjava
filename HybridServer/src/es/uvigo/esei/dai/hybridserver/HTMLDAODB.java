@@ -10,7 +10,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.sun.xml.internal.txw2.Document;
 
 public class HTMLDAODB implements HTMLDAO {
 	private Connection Conexion;
@@ -48,16 +47,16 @@ public class HTMLDAODB implements HTMLDAO {
 	}
 
 	@Override
-	public List<Pagina> listPages() {
+	public List<String> listPages() {
 		this.MySQLConnection(this.user, this.pass, this.url);
-		List<Pagina> pagina = new LinkedList<Pagina>();
+		List<String> pagina = new LinkedList<String>();
 		try {
 			String Query = "SELECT * FROM " + tabla;
 			Statement st = Conexion.createStatement();
 			java.sql.ResultSet resultSet;
 			resultSet = st.executeQuery(Query);
 			while (resultSet.next()) {
-				pagina.add(new Pagina(resultSet.getString("uuid"),resultSet.getString("content")));
+				pagina.add(resultSet.getString("uuid"));
 			}
 		} catch (SQLException ex) {
 		}

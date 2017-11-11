@@ -13,6 +13,7 @@ import es.uvigo.esei.dai.hybridserver.http.HTTPRequest;
 import es.uvigo.esei.dai.hybridserver.http.HTTPRequestMethod;
 import es.uvigo.esei.dai.hybridserver.http.HTTPResponse;
 import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
+import es.uvigo.esei.dai.hybridserver.HtmlController;
 
 public class ServiceThread extends Thread {
 	private Socket socket;
@@ -138,24 +139,25 @@ public class ServiceThread extends Thread {
 		} catch (IOException | HTTPParseException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	private String listarPaginas() throws Exception {
-		System.out.println("Entra145");
-		List<Pagina> paginas = this.controler.listPages();
-		Iterator<Pagina> it = paginas.iterator();
+		System.out.println("Entra150");
+		List<String> paginas = pages.listPages();
+		System.out.println("152");
+		Iterator<String> it = paginas.iterator();
 		String identificador = "<h1><b>Servidor Local</b></h1>";
+		System.out.println("Entra154");
 		if (!paginas.isEmpty()) {
+			System.out.println("Entra156");
 			identificador += "<ul>";
 			while (it.hasNext()) {
-				Pagina itpagina = it.next();
-				identificador += "<li><a href='html?uuid=" + itpagina.getUuid() + "'>" + itpagina.getUuid()
+				String itpagina = it.next();
+				identificador += "<li><a href='html?uuid=" + itpagina + "'>" + itpagina
 						+ "</a></li>";
 			}
 			identificador += "</ul>";

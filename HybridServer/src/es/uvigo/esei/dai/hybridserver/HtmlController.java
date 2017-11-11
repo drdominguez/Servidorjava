@@ -11,7 +11,8 @@ public class HtmlController {
 		this.htmldao = htmldao;
 	}
 
-	public List<Pagina> listPages() {
+	public List<String> listPages() {
+		System.out.println("Entró en el controlador");
 		return this.htmldao.listPages();
 	}
 
