@@ -2,6 +2,8 @@ package es.uvigo.esei.dai.hybridserver;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
@@ -100,7 +102,23 @@ public class HTMLDAODB implements HTMLDAO {
 	}
 
 	@Override
-	public String getPage(String uuid) {
+	public String getPage(String uuid) throws SQLException {
+//		String resultado = null;
+//		try (Connection connection = DriverManager.getConnection(this.url, this.user, this.pass)) {
+//			try (PreparedStatement prepStatement = connection
+//				.prepareStatement("SELECT * FROM HTML " + "WHERE uuid = ? ")) {
+//				prepStatement.setString(1, uuid);
+//
+//			try (ResultSet resultSet = prepStatement.executeQuery()) {
+//				if (resultSet.next()) {
+//					resultado = resultSet.getString("content");
+//				}
+//				return resultado;
+//				}
+//			}
+//		}
+//	}
+	
 		this.MySQLConnection(this.user, this.pass, this.url);
 		String resultado;
 		try {

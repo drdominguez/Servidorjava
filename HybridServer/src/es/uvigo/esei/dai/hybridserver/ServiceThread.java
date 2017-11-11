@@ -39,8 +39,10 @@ public class ServiceThread extends Thread {
 			//Caso de ser Vacío
 			case "":
 				System.out.println("vacía");
-				String paginaInicial = "<head><meta charset=\"utf8\"></head>" + "<h1><b>Hybrid Server</b></h1>"
-						+ "<p>Alberte Pazos Martinez</p>" + "<p>Daniel Rodríguez Domínguez</p>";
+				String paginaInicial = "<head><meta charset=\"utf8\"></head>" 
+						+ "<DIV ALIGN=center><h1><b>Hybrid Server</b></h1></DIV>"
+						+ "<p>Alberte Pazos Martinez</p>" 
+						+ "<p>Daniel Rodríguez Domínguez</p>";
 				String paginas = "<a href='html'>Lista de Páginas</a>  ";
 				response.setContent(paginaInicial + paginas);
 				response.setStatus(HTTPResponseStatus.S200);

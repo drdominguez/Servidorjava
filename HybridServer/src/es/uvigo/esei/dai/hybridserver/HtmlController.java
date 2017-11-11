@@ -24,7 +24,7 @@ public class HtmlController {
 		return this.htmldao.deletePage(uuid);
 	}
 
-	public String getPage(String uuid) {
+	public String getPage(String uuid) throws SQLException {
 		return this.htmldao.getPage(uuid);
 	}
 }
