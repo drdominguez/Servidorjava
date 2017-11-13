@@ -20,7 +20,7 @@ public class HybridServer {
 	public HybridServer(){
 		numClient=50;
 		SERVICE_PORT = 8888;
-		pages=new HTMLDAODB("jdbc:mysql://localhost:3306/hstestdb", "hsdb", "hsdbpass");
+		pages=new HTMLDAODB("hsdb", "hsdbpass","jdbc:mysql://localhost:3306/hstestdb");
 	}
 
 	public HybridServer(Map<String, String> pages) {

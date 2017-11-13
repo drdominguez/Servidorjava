@@ -11,7 +11,7 @@ public class HtmlController {
 		this.htmldao = htmldao;
 	}
 
-	public List<String> listPages() {
+	public List<String> listPages() throws SQLException {
 		System.out.println("Entró en el controlador");
 		return this.htmldao.listPages();
 	}
@@ -20,7 +20,7 @@ public class HtmlController {
 		return this.htmldao.addPage(uuid, content);
 	}
 
-	public boolean deletePage(String uuid) {
+	public boolean deletePage(String uuid) throws SQLException {
 		return this.htmldao.deletePage(uuid);
 	}
 

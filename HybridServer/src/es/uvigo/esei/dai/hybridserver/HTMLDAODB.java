@@ -32,108 +32,160 @@ public class HTMLDAODB implements HTMLDAO {
 		this.url = url;
 	}
 
-	public void MySQLConnection(String user, String pass, String db_name) {
-		try {
-			Conexion = DriverManager.getConnection(db_name, user, pass);
-		} catch (SQLException ex) {
-			Logger.getLogger(HTMLDAODB.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+//	public void MySQLConnection(String user, String pass, String db_name) {
+//		try {
+//			Conexion = DriverManager.getConnection(db_name, user, pass);
+//		} catch (SQLException ex) {
+//			Logger.getLogger(HTMLDAODB.class.getName()).log(Level.SEVERE, null, ex);
+//		}
+//	}
 
-	public void closeConnection() {
-		try {
-			Conexion.close();
-		} catch (SQLException ex) {
-			Logger.getLogger(HTMLDAODB.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+//	public void closeConnection() {
+//		try {
+//			Conexion.close();
+//		} catch (SQLException ex) {
+//			Logger.getLogger(HTMLDAODB.class.getName()).log(Level.SEVERE, null, ex);
+//		}
+//	}
 
 	@Override
-	public List<String> listPages() {
-		this.MySQLConnection(this.user, this.pass, this.url);
-		List<String> pagina = new LinkedList<String>();
-		try {
-			String Query = "SELECT * FROM " + tabla;
-			Statement st = Conexion.createStatement();
-			java.sql.ResultSet resultSet;
-			resultSet = st.executeQuery(Query);
-			while (resultSet.next()) {
-				pagina.add(resultSet.getString("uuid"));
+	public List<String> listPages() throws SQLException {
+		List<String> pagina = new LinkedList<>();
+
+		try (Connection connection = DriverManager.getConnection(this.url, this.user, this.pass)) {
+			try (Statement statement = connection.createStatement()) {
+				try (ResultSet result = statement.executeQuery("SELECT * FROM HTML")) {
+					while (result.next()) {
+						pagina.add(result.getString("uuid"));
+					}
+				}
 			}
-		} catch (SQLException ex) {
 		}
-		this.closeConnection();
 		return pagina;
+		
+	
+//		this.MySQLConnection(this.user, this.pass, this.url);
+//		List<String> pagina = new LinkedList<String>();
+//		try {
+//			String Query = "SELECT * FROM " + tabla;
+//			Statement st = Conexion.createStatement();
+//			java.sql.ResultSet resultSet;
+//			resultSet = st.executeQuery(Query);
+//			while (resultSet.next()) {
+//				pagina.add(resultSet.getString("uuid"));
+//			}
+//		} catch (SQLException ex) {
+//		}
+//		this.closeConnection();
+//		return pagina;
 	}
 
 	@Override
 	public boolean addPage(String uuid, String content) throws SQLException {
 		boolean resultado = false;
-		this.MySQLConnection(this.user, this.pass, this.url);
-		try {
-			String Query = "INSERT INTO HTML(uuid,content) VALUES(" + "\"" + uuid + "\"" + ","  + "\""+ content +"\"" + ")";
-			Statement st = Conexion.createStatement();
-			st.executeUpdate(Query);
-			resultado = true;
-		} catch (SQLException ex) {
-			resultado = false;
+		try (Connection connection = DriverManager.getConnection(this.url, this.user, this.pass)) {
+			try (PreparedStatement statement = connection
+				.prepareStatement("INSERT INTO HTML (uuid, content) VALUES (?, ?)")) {
+				statement.setString(1, uuid);
+				statement.setString(2, content);
+				//Compruebo si no se introduce
+				int value = statement.executeUpdate();
+				if (value != 1) {
+					resultado=false;
+					throw new SQLException("Error al añadir.");
+				}
+				resultado=true;
+			} catch (SQLException e) {
+				throw new SQLException(e);
+			}
 		}
-		this.closeConnection();
-
 		return resultado;
+		
+//		boolean resultado = false;
+//		this.MySQLConnection(this.user, this.pass, this.url);
+//		try {
+//			String Query = "INSERT INTO HTML(uuid,content) VALUES(" + "\"" + uuid + "\"" + ","  + "\""+ content +"\"" + ")";
+//			Statement st = Conexion.createStatement();
+//			st.executeUpdate(Query);
+//			resultado = true;
+//		} catch (SQLException ex) {
+//			resultado = false;
+//		}
+//		this.closeConnection();
+//
+//		return resultado;
 	}
 
 	@Override
-	public boolean deletePage(String uuid) {
+	public boolean deletePage(String uuid) throws SQLException {
 		boolean resultado = false;
-		this.MySQLConnection(this.user, this.pass, this.url);
-		try {
-			String Query = "DELETE FROM " + tabla + " WHERE uuid = \"" + uuid + "\"";
-			Statement st = Conexion.createStatement();
-			st.executeUpdate(Query);
-			resultado = true;
-
-		} catch (SQLException ex) {
-
-			resultado = false;
+		//Conexión a la base de datos
+		try (Connection connection = DriverManager.getConnection(this.url, this.user, this.pass)) {
+			//Creacion de la consulta
+			try (PreparedStatement statement = connection
+				.prepareStatement("DELETE FROM " + tabla + " WHERE uuid = ?")) {
+				statement.setString(1, uuid);
+				//Compruebo si no se eliminó
+				statement.executeUpdate();
+				resultado = true;
+			} catch (SQLException ex) {
+				resultado = false;
+				
+			}
 		}
-		this.closeConnection();
 		return resultado;
 	}
+	
+		
+//		boolean resultado = false;
+//		this.MySQLConnection(this.user, this.pass, this.url);
+//		try {
+//			String Query = "DELETE FROM " + tabla + " WHERE uuid = \"" + uuid + "\"";
+//			Statement st = Conexion.createStatement();
+//			st.executeUpdate(Query);
+//			resultado = true;
+//
+//		} catch (SQLException ex) {
+//
+//			resultado = false;
+//		}
+//		this.closeConnection();
+//		return resultado;
+//	}
 
 	@Override
 	public String getPage(String uuid) throws SQLException {
-//		String resultado = null;
-//		try (Connection connection = DriverManager.getConnection(this.url, this.user, this.pass)) {
-//			try (PreparedStatement prepStatement = connection
-//				.prepareStatement("SELECT * FROM HTML " + "WHERE uuid = ? ")) {
-//				prepStatement.setString(1, uuid);
-//
-//			try (ResultSet resultSet = prepStatement.executeQuery()) {
-//				if (resultSet.next()) {
-//					resultado = resultSet.getString("content");
-//				}
-//				return resultado;
-//				}
-//			}
-//		}
-//	}
-	
-		this.MySQLConnection(this.user, this.pass, this.url);
-		String resultado;
-		try {
-			String Query = "SELECT content FROM " + tabla + " WHERE uuid=\""+uuid+"\"";
-			Statement st = Conexion.createStatement();
-			java.sql.ResultSet resultSet;
-			resultSet = st.executeQuery(Query);
-			resultSet.next();
-			resultado = resultSet.getString("content");
+		String resultado = null;
+		try (Connection connection = DriverManager.getConnection(this.url, this.user, this.pass)) {
+			try (PreparedStatement prepStatement = connection
+				.prepareStatement("SELECT * FROM HTML " + "WHERE uuid = ? ")) {
+				prepStatement.setString(1, uuid);
 
-		} catch (SQLException ex) {
-			resultado = null;
+			try (ResultSet resultSet = prepStatement.executeQuery()) {
+				if (resultSet.next()) {
+					resultado = resultSet.getString("content");
+				}
+				return resultado;
+				}
+			}
 		}
-		this.closeConnection();
-		return resultado;
 	}
+	
+//		this.MySQLConnection(this.user, this.pass, this.url);
+//		String resultado;
+//		try {
+//			String Query = "SELECT content FROM " + tabla + " WHERE uuid=\""+uuid+"\"";
+//			Statement st = Conexion.createStatement();
+//			java.sql.ResultSet resultSet;
+//			resultSet = st.executeQuery(Query);
+//			resultSet.next();
+//			resultado = resultSet.getString("content");
+//
+//		} catch (SQLException ex) {
+//			resultado = null;
+//		}
+//		this.closeConnection();
+//		return resultado;
+//	}
 
 }

@@ -115,12 +115,13 @@ public class ServiceThread extends Thread {
 					String uuid = request.getResourceParameters().get("uuid");
 					String contenido = pages.getPage(uuid);
 					if (uuid == null) {
-						response.setStatus(HTTPResponseStatus.S200);
-					} else {
+						response.setStatus(HTTPResponseStatus.S400);
+					}else {
 						if (contenido == null) {
 							pages.deletePage(uuid);
 							response.setStatus(HTTPResponseStatus.S200);
-						} else {
+						}
+						else {
 							if (pages.deletePage(uuid)) {
 								response.setStatus(HTTPResponseStatus.S200);
 							} else {
@@ -152,7 +153,7 @@ public class ServiceThread extends Thread {
 		List<String> paginas = pages.listPages();
 		System.out.println("152");
 		Iterator<String> it = paginas.iterator();
-		String identificador = "<h1><b>Servidor Local</b></h1>";
+		String identificador = "<head><meta charset=\\\"utf8\\\"></head>"+"<h1><b>Servidor Local</b></h1>";
 		System.out.println("Entra154");
 		if (!paginas.isEmpty()) {
 			System.out.println("Entra156");
