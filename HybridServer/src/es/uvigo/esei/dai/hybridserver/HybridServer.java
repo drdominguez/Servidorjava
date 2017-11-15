@@ -14,17 +14,17 @@ public class HybridServer {
 	private  int SERVICE_PORT = 8888;
 	private Thread serverThread;
 	private boolean stop;
-	private HTMLDAO pages;
+	private HtmlController pages;
 	private int numClient=50;
 
 	public HybridServer(){
 		numClient=50;
 		SERVICE_PORT = 8888;
-		pages=new HTMLDAODB("hsdb", "hsdbpass","jdbc:mysql://localhost:3306/hstestdb");
+		pages=new HtmlController(new HTMLDAODB("hsdb", "hsdbpass","jdbc:mysql://localhost:3306/hstestdb"));
 	}
 
 	public HybridServer(Map<String, String> pages) {
-		this.pages= new HTMLDAOMap(pages);
+		this.pages= new HtmlController(new HTMLDAOMap(pages));
 		SERVICE_PORT = 8888;
 		numClient=50;
 	}
@@ -32,7 +32,7 @@ public class HybridServer {
 	public HybridServer(Properties properties) throws SQLException {
 		numClient=Integer.parseInt(properties.get("numClients").toString());
 		SERVICE_PORT = Integer.parseInt(properties.get("port").toString());
-		pages=new HTMLDAODB(properties);
+		pages=new HtmlController(new HTMLDAODB(properties));
 	}
 
 	public int getPort() {
