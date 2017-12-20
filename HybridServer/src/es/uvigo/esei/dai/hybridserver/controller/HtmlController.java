@@ -1,7 +1,9 @@
-package es.uvigo.esei.dai.hybridserver;
+package es.uvigo.esei.dai.hybridserver.controller;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import es.uvigo.esei.dai.hybridserver.dao.HTMLDAO;
 
 public class HtmlController {
 
