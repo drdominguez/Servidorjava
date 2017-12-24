@@ -32,7 +32,6 @@ public class HTTPRequestGETParametersTest {
 		
 		request = new HTTPRequest(new StringReader(
 			requestText + "\r\n"
-		
 		));
 	}
 

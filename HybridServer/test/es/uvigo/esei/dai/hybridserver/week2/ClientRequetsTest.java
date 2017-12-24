@@ -81,6 +81,7 @@ public class ClientRequetsTest extends HybridServerTestCase {
 		for (String[] page : pages) {
 			final String uuid = page[0];
 			final String content = page[1];
+			
 			final String pageURL = url + "html?uuid=" + uuid;
 			
 			assertThat(getContent(pageURL), containsString(content));
