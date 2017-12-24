@@ -9,5 +9,6 @@ public interface HTMLDAO {
 	public boolean addPage (String uuid,String content) throws SQLException;
 	public boolean deletePage (String uuid) throws SQLException;
 	public String getPage (String uuid) throws SQLException;
+	public boolean exists (String uuid) throws SQLException;
 
 }

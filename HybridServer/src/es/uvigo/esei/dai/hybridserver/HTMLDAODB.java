@@ -160,7 +160,6 @@ public class HTMLDAODB implements HTMLDAO {
 			try (PreparedStatement prepStatement = connection
 				.prepareStatement("SELECT * FROM HTML " + "WHERE uuid = ? ")) {
 				prepStatement.setString(1, uuid);
-
 			try (ResultSet resultSet = prepStatement.executeQuery()) {
 				if (resultSet.next()) {
 					resultado = resultSet.getString("content");
@@ -170,6 +169,24 @@ public class HTMLDAODB implements HTMLDAO {
 			}
 		}
 	}
+	@Override
+	public boolean exists(String uuid) throws SQLException {
+		try (Connection connection = DriverManager.getConnection(this.url, this.user, this.pass)) {
+		String query = "SELECT * FROM XML WHERE uuid=?";
+		try (PreparedStatement statement = connection.prepareStatement(query)) {
+			statement.setString(1, uuid);
+			try (ResultSet results = statement.executeQuery()) {
+				if (results.next())
+					return true;
+				else
+					return false;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	}
+
 	
 //		this.MySQLConnection(this.user, this.pass, this.url);
 //		String resultado;
