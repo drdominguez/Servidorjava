@@ -1,5 +1,6 @@
 package es.uvigo.esei.dai.hybridserver.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,16 @@ public class HTMLDAOMap implements HTMLDAO {
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public boolean exists(String uuid) throws SQLException {
+		if (pages.containsKey(uuid)) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 
 }
