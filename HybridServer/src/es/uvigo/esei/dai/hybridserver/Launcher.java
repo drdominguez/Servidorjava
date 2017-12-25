@@ -27,11 +27,17 @@ public class Launcher {
 		File xml= new File("../configuration.xml");
 		File validar=new File ("../configuracion.xsd");
 		if(args.length==0) {
-			if(validateXMLSchema(validar,xml)) {
+			try{
+			validateXMLSchema(validar,xml);
 				XMLConfigurationLoader loadxml = new XMLConfigurationLoader();
-				loadxml.load(xml);
+				Configuration conf=loadxml.load(xml);
+				server = new HybridServer(conf);
+			}catch(Exception E){
+				System.err.println("El XML no es válido");
 			}
-		}
+		}else {
+			server=new HybridServer();
+			}
 		
 		server.start();
 	}
