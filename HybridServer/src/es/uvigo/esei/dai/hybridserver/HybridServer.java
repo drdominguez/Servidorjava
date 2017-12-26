@@ -10,7 +10,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import es.uvigo.esei.dai.hybridserver.controller.HtmlController;
+import es.uvigo.esei.dai.hybridserver.controller.XmlController;
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAODB;
+import es.uvigo.esei.dai.hybridserver.Configuration;
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAOMap;
 
 
@@ -42,7 +44,14 @@ public class HybridServer {
 
 
 	public HybridServer(Configuration load) {
-		// TODO Auto-generated constructor stub
+		Properties prop= new Properties();
+		prop.setProperty("numClients", ""+load.getNumClients());
+		prop.setProperty("port", ""+load.getHttpPort());
+		prop.setProperty("db.user",""+load.getDbUser());
+		prop.setProperty("db.password",""+load.getDbPassword());
+		prop.setProperty("db.url",""+load.getDbURL());
+		pages=new HtmlController(new HTMLDAODB(prop));
+		
 	}
 
 	public int getPort() {

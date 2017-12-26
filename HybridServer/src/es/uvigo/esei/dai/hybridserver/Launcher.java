@@ -1,14 +1,6 @@
 package es.uvigo.esei.dai.hybridserver;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Properties;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
 import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
@@ -24,13 +16,14 @@ import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
 public class Launcher {
 	public static void main(String[] args) throws Exception{
 		HybridServer server= null;
-		File xml= new File("../configuration.xml");
-		File validar=new File ("../configuracion.xsd");
+		File xml= new File("configuration.xml");
+		File validar=new File ("configuracion.xsd");
 		if(args.length==0) {
 			try{
 			validateXMLSchema(validar,xml);
 				XMLConfigurationLoader loadxml = new XMLConfigurationLoader();
 				Configuration conf=loadxml.load(xml);
+				conf.toString();
 				server = new HybridServer(conf);
 			}catch(Exception E){
 				System.err.println("El XML no es válido");

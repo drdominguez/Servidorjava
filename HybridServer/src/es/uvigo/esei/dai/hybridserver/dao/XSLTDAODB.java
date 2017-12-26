@@ -9,19 +9,19 @@ import java.util.List;
 
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAO;
 
-public class XMLDAODB implements HTMLDAO {
+public class XSLTDAODB {
 	
 	private Connection connection;
 	
-	public XMLDAODB(Connection connection) {
+	public XSLTDAODB(Connection connection) {
 		this.connection = connection;
 	}
-@Override
-	public boolean addPage(String uuid, String content) {
-		String query = "INSERT INTO XML (uuid,content) VALUES(?,?)";
+public boolean addPage(String uuid, String content,String xsd) {
+		String query = "INSERT INTO XSLT (uuid,content,xsd) VALUES(?,?,?)";
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
 			statement.setString(1, uuid);
 			statement.setString(2, content);
+			statement.setString(3, xsd);
 			statement.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -29,9 +29,8 @@ public class XMLDAODB implements HTMLDAO {
 		}
 
 	}
-@Override
-	public boolean deletePage(String uuid) {
-		String query = "DELETE FROM XML WHERE uuid=?";
+public boolean deletePage(String uuid) {
+		String query = "DELETE FROM XSLT WHERE uuid=?";
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
 			statement.setString(1,uuid);
 			statement.executeUpdate();
@@ -41,10 +40,9 @@ public class XMLDAODB implements HTMLDAO {
 		}
 	}
 
-	@Override
 	public String getPage(String uuid ) {
 		String content = null;
-		String query = "SELECT content FROM XML WHERE uuid=?";
+		String query = "SELECT content FROM XSLT WHERE uuid=?";
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
 			statement.setString(1, uuid);
 			try (ResultSet results = statement.executeQuery()) {
@@ -58,11 +56,10 @@ public class XMLDAODB implements HTMLDAO {
 		return content;
 	}
 
-	@Override
 	public List<String>  listPages() {
 		//StringBuilder content = new StringBuilder();
 		List<String> list= new ArrayList<String>();
-		String query = "SELECT uuid FROM XML";
+		String query = "SELECT uuid FROM XSLT";
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
 			try (ResultSet results = statement.executeQuery()) {
 				while (results.next()) {
@@ -78,9 +75,8 @@ public class XMLDAODB implements HTMLDAO {
 
 
 
-	@Override
 	public boolean exists(String uuid) {
-		String query = "SELECT * FROM XML WHERE uuid=?";
+		String query = "SELECT * FROM XSLT WHERE uuid=?";
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
 			statement.setString(1, uuid);
 			try (ResultSet results = statement.executeQuery()) {

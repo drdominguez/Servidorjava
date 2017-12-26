@@ -5,21 +5,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
-
 import es.uvigo.esei.dai.hybridserver.controller.HtmlController;
+import es.uvigo.esei.dai.hybridserver.controller.XmlController;
 import es.uvigo.esei.dai.hybridserver.http.HTTPParseException;
 import es.uvigo.esei.dai.hybridserver.http.HTTPRequest;
-import es.uvigo.esei.dai.hybridserver.http.HTTPRequestMethod;
-import es.uvigo.esei.dai.hybridserver.http.HTTPResponse;
-import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
 
 public class ServiceThread extends Thread {
 	private Socket socket;
 	private BufferedReader reader;
 	private HtmlController pages;
+	private XmlController xmlpages;
 	private PrintWriter writer;
 
 	public ServiceThread(Socket socket,HtmlController pages) throws IOException {//Lista de controladores 2ndo argumento
