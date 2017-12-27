@@ -13,6 +13,7 @@ import es.uvigo.esei.dai.hybridserver.http.HTTPRequest;
 import es.uvigo.esei.dai.hybridserver.http.HTTPRequestMethod;
 import es.uvigo.esei.dai.hybridserver.http.HTTPResponse;
 import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
+import es.uvigo.esei.dai.hybridserver.http.MIME;
 
 public class Manager {
 	private HTTPRequest request;
@@ -20,6 +21,7 @@ public class Manager {
 	public Manager(HTTPRequest request,FactoryControllerDB create) {//El segundo argumento hashmap
 		this.request = request;
 		this.create = create;
+		
 	}
 
 	public HTTPResponse getResponse() {
@@ -38,6 +40,8 @@ public class Manager {
 			break;
 		// Si el recurso es html
 		case "html":
+			MIME a=MIME.TEXT_HTML;
+			response.putParameter("Content-Type", a.getMime());
 			HtmlController pages=this.create.createHTMLController();
 			// Comprobamos que sea un GET
 			if (request.getMethod().equals(HTTPRequestMethod.GET)) {
@@ -116,6 +120,8 @@ public class Manager {
 
 			break;
 		case "xml":
+			MIME xml=MIME.APPLICATION_XML;
+			response.putParameter("Content-Type", xml.getMime());
 			XmlController pagesxml=this.create.createXmlController();
 			if (request.getMethod().equals(HTTPRequestMethod.GET)) {
 				String uuid = request.getResourceParameters().get("uuid");
@@ -193,6 +199,8 @@ public class Manager {
 
 			break;
 		case "xsd":
+			MIME xsd=MIME.APPLICATION_XML;
+			response.putParameter("Content-Type", xsd.getMime());
 			XsdController pagesxsd=this.create.createXsdController();
 			if (request.getMethod().equals(HTTPRequestMethod.GET)) {
 				String uuid = request.getResourceParameters().get("uuid");
@@ -270,6 +278,8 @@ public class Manager {
 
 			break;
 		case "xslt":
+			MIME xslt=MIME.APPLICATION_XML;
+			response.putParameter("Content-Type", xslt.getMime());
 			XsltController pagesxslt=this.create.createXsltController();
 			if (request.getMethod().equals(HTTPRequestMethod.GET)) {
 				String uuid = request.getResourceParameters().get("uuid");

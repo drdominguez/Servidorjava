@@ -25,13 +25,6 @@ public class HybridServer {
 		Configuration conf=new Configuration();
 		pages=new FactoryControllerDB(conf);
 	}
-
-//	public HybridServer(Map<String, String> pages) {
-//		this.pages= new HtmlController(new HTMLDAOMap(pages));
-//		SERVICE_PORT = 8888;
-//		numClient=50;
-//	}
-
 	public HybridServer(Properties properties) throws SQLException {
 		numClient=Integer.parseInt(properties.get("numClients").toString());
 		SERVICE_PORT = Integer.parseInt(properties.get("port").toString());
@@ -49,12 +42,6 @@ public class HybridServer {
 	public HybridServer(Configuration load) {
 		numClient=load.getNumClients();
 		SERVICE_PORT = load.getHttpPort();
-//		Properties prop= new Properties();
-//		prop.setProperty("numClients", ""+load.getNumClients());
-//		prop.setProperty("port", ""+load.getHttpPort());
-//		prop.setProperty("db.user",""+load.getDbUser());
-//		prop.setProperty("db.password",""+load.getDbPassword());
-//		prop.setProperty("db.url",""+load.getDbURL());
 		pages=new FactoryControllerDB(load);
 		
 	}

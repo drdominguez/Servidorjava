@@ -3,6 +3,7 @@ package es.uvigo.esei.dai.hybridserver.http;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,18 +68,31 @@ public class HTTPResponse {
 	}
 
 	public List<String> listParameters() {
-		return null;
+		
+		return (List<String>)parameters.values();
 	}
 
 	public void print(Writer writer) throws IOException {
 
 		String sol = getVersion() + " " + get.toString().substring(1) + " OK\r\n";
-
 		if (!parameters.isEmpty()) {
-
-			sol = sol + "Content-Type: " + parameters.get("Content-Type") + "\r\n" + "Content-Encoding: "
-					+ parameters.get("Content-Encoding") + "\r\n" + "Content-Language: "
-					+ parameters.get("Content-Language") + "\r\n";
+			int num=0;
+			
+			if(parameters.get("Content-Type")!=null) {
+					sol = sol + "Content-Type: " + parameters.get("Content-Type")+"\r\n";
+					parameters.remove("Content-Type");
+				}
+			else if(parameters.get("Content-Encoding")!=null) {
+					sol=sol+"\r\n" + "Content-Encoding: "
+							+ parameters.get("Content-Encoding");
+					parameters.remove("Content-Encoding");
+				}
+			else if (parameters.get("Content-Language")!=null) {
+					sol=sol+"\r\n"+"Content-Language: "
+							+ parameters.get("Content-Language") + "\r\n";
+					parameters.remove("Content-Language");
+				}
+				
 		}
 		if (content != "") {
 			sol = sol + "Content-Length: " + content.length() + "\r\n\r\n" + content;
@@ -86,10 +100,8 @@ public class HTTPResponse {
 		if (content == "") {
 			sol = sol + "\r\n";
 		}
-		System.out.println("11111111" + sol);
 		CharSequence solucion = sol.subSequence(0, sol.length());
 		writer.append(solucion);
-		System.out.println("22222222" + parameters.get("Content-Type"));
 		writer.flush();
 	}
 
