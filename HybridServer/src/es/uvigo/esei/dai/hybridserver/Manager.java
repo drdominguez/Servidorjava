@@ -153,7 +153,7 @@ public class Manager {
 				String uuid = request.getHeaderParameters().get("uuid");
 				if (uuid == null) {
 					String solucion = request.getContent().substring(0, request.getContent().indexOf("="));
-					if (!solucion.equals("html")) {
+					if (!solucion.equals("xml")) {
 						response.setStatus(HTTPResponseStatus.S400);
 					} else {
 						uuid = java.util.UUID.randomUUID().toString();
@@ -164,12 +164,12 @@ public class Manager {
 
 						String[] contenidoigual = content.split("=");
 						if (pagesxml.addPage(uuid, contenidoigual[1])) {
-							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+							String uuidHyperlink = "<a href=\"xml?uuid=" + uuid + "\">" + uuid + "</a>";
 							response.setContent(uuidHyperlink);
 							response.setStatus(HTTPResponseStatus.S200);
 						} else {
 
-							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+							String uuidHyperlink = "<a href=\"xml?uuid=" + uuid + "\">" + uuid + "</a>";
 							response.setContent(uuidHyperlink);
 							response.setStatus(HTTPResponseStatus.S200);
 						}
@@ -232,7 +232,7 @@ public class Manager {
 				String uuid = request.getHeaderParameters().get("uuid");
 				if (uuid == null) {
 					String solucion = request.getContent().substring(0, request.getContent().indexOf("="));
-					if (!solucion.equals("html")) {
+					if (!solucion.equals("xsd")) {
 						response.setStatus(HTTPResponseStatus.S400);
 					} else {
 						uuid = java.util.UUID.randomUUID().toString();
@@ -243,12 +243,12 @@ public class Manager {
 
 						String[] contenidoigual = content.split("=");
 						if (pagesxsd.addPage(uuid, contenidoigual[1])) {
-							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+							String uuidHyperlink = "<a href=\"xsd?uuid=" + uuid + "\">" + uuid + "</a>";
 							response.setContent(uuidHyperlink);
 							response.setStatus(HTTPResponseStatus.S200);
 						} else {
 
-							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+							String uuidHyperlink = "<a href=\"xsd?uuid=" + uuid + "\">" + uuid + "</a>";
 							response.setContent(uuidHyperlink);
 							response.setStatus(HTTPResponseStatus.S200);
 						}
@@ -311,7 +311,7 @@ public class Manager {
 				String uuid = request.getHeaderParameters().get("uuid");
 				if (uuid == null) {
 					String solucion = request.getContent().substring(0, request.getContent().indexOf("="));
-					if (!solucion.equals("html")) {
+					if (!solucion.equals("xsd")) {
 						response.setStatus(HTTPResponseStatus.S400);
 					} else {
 						uuid = java.util.UUID.randomUUID().toString();
@@ -322,12 +322,12 @@ public class Manager {
 
 						String[] contenidoigual = content.split("=");
 						if (pagesxslt.addPage(uuid, contenidoigual[1],"")) {
-							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+							String uuidHyperlink = "<a href=\"xslt?uuid=" + uuid + "\">" + uuid + "</a>";
 							response.setContent(uuidHyperlink);
 							response.setStatus(HTTPResponseStatus.S200);
 						} else {
 
-							String uuidHyperlink = "<a href=\"html?uuid=" + uuid + "\">" + uuid + "</a>";
+							String uuidHyperlink = "<a href=\"xslt?uuid=" + uuid + "\">" + uuid + "</a>";
 							response.setContent(uuidHyperlink);
 							response.setStatus(HTTPResponseStatus.S200);
 						}
