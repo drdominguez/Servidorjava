@@ -28,6 +28,8 @@ public class HTTPRequest {
 		linea = bufferedreader.readLine();
 
 		// Buscamos getMethod()
+		//linea.indexOf(" ");
+		
 		String[] espacio = (linea.split(" "));
 
 		if (espacio[0].equals("")) {
@@ -81,9 +83,9 @@ public class HTTPRequest {
 			name = chain.substring(1, interrogante);
 			if (barra.length > 2) {
 				path = new String[] { barra[1].toString(), barra[2].toString() };
-			} else
+			} else if(barra.length==2){
 				path = new String[] { barra[1].toString() };
-
+				}
 			String cadena = chain.substring(interrogante + 1);
 			String[] cadenas = (cadena.split("&"));
 			int igual;

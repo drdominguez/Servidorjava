@@ -31,13 +31,10 @@ import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import es.uvigo.esei.dai.hybridserver.HybridServer;
 import es.uvigo.esei.dai.hybridserver.utils.HybridServerTestCase;
 
 public class ClientRequetsTest extends HybridServerTestCase {
@@ -48,7 +45,7 @@ public class ClientRequetsTest extends HybridServerTestCase {
 	public void setup() {
 		this.invalidUUID = "12345678-abcd-1234-ab12-9876543210ab";
 	}
-	
+	/*
 	@Override
 	protected HybridServer createHybridServer() {
 		// El servidor debe tener las siguientes páginas en memoria
@@ -73,7 +70,7 @@ public class ClientRequetsTest extends HybridServerTestCase {
 		}
 		
 		return new HybridServer(pages);
-	}
+	}*/
 	
 	// Ejercicio 2
 	@Test
@@ -81,6 +78,7 @@ public class ClientRequetsTest extends HybridServerTestCase {
 		for (String[] page : pages) {
 			final String uuid = page[0];
 			final String content = page[1];
+			
 			final String pageURL = url + "html?uuid=" + uuid;
 			
 			assertThat(getContent(pageURL), containsString(content));

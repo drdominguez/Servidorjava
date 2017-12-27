@@ -1,3 +1,5 @@
+
+
 package es.uvigo.esei.dai.hybridserver;
 
 import java.sql.Connection;
@@ -8,9 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DBService {
-    private static final Logger log = Logger.getLogger(DBService.class.getName());
+    private Logger log = Logger.getLogger(DBService.class.getName());
 
-	private final Properties config;
+	private Properties config;
 	
 	private Connection connection;
 

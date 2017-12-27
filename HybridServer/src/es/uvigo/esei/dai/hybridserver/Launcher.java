@@ -1,48 +1,58 @@
 package es.uvigo.esei.dai.hybridserver;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.io.File;
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+
+import org.xml.sax.SAXException;
+
+import es.uvigo.es.dai.hybridserver.configuration.Configuration;
+import es.uvigo.es.dai.hybridserver.configuration.XMLConfigurationLoader;
+import es.uvigo.esei.dai.hybridserver.http.HTTPResponse;
+import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
 
 public class Launcher {
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws Exception{
 		HybridServer server= null;
-		if(args.length != 0) {
-			try {
-				FileReader filereader = new FileReader(args[0]);
-				Properties propiedades = new Properties();
-				propiedades.load(filereader);
-				//System.out.println(propiedades);
-				server = new HybridServer(propiedades);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		File xml= new File("configuration.xml");
+		File validar=new File ("configuracion.xsd");
+		if(args.length==0) {
+			try{
+			validateXMLSchema(validar,xml);
+				XMLConfigurationLoader loadxml = new XMLConfigurationLoader();
+				Configuration conf=loadxml.load(xml);
+				conf.toString();
+				server = new HybridServer(conf);
+			}catch(Exception E){
+				System.err.println("El XML no es válido");
 			}
 		}else {
-		String[][] pages = new String[][] {
-			//  { "uuid",                                 "texto contenido por la página"                               }
-			    { "6df1047e-cf19-4a83-8cf3-38f5e53f7725", "This is the html page 6df1047e-cf19-4a83-8cf3-38f5e53f7725." },
-			    { "79e01232-5ea4-41c8-9331-1c1880a1d3c2", "This is the html page 79e01232-5ea4-41c8-9331-1c1880a1d3c2." },
-			    { "a35b6c5e-22d6-4707-98b4-462482e26c9e", "This is the html page a35b6c5e-22d6-4707-98b4-462482e26c9e." },
-			    { "3aff2f9c-0c7f-4630-99ad-27a0cf1af137", "This is the html page 3aff2f9c-0c7f-4630-99ad-27a0cf1af137." },
-			    { "77ec1d68-84e1-40f4-be8e-066e02f4e373", "This is the html page 77ec1d68-84e1-40f4-be8e-066e02f4e373." },
-			    { "8f824126-0bd1-4074-b88e-c0b59d3e67a3", "This is the html page 8f824126-0bd1-4074-b88e-c0b59d3e67a3." },
-			    { "c6c80c75-b335-4f68-b7a7-59434413ce6c", "This is the html page c6c80c75-b335-4f68-b7a7-59434413ce6c." },
-			    { "f959ecb3-6382-4ae5-9325-8fcbc068e446", "This is the html page f959ecb3-6382-4ae5-9325-8fcbc068e446." },
-			    { "2471caa8-e8df-44d6-94f2-7752a74f6819", "This is the html page 2471caa8-e8df-44d6-94f2-7752a74f6819." },
-			    { "fa0979ca-2734-41f7-84c5-e40e0886e408", "This is the html page fa0979ca-2734-41f7-84c5-e40e0886e408." }
-			};
-			// Creación del servidor con las páginas ya en memoria.
-			final Map<String, String> pagesmapa = new HashMap<>();
-			for (String[] page : pages) {
-				pagesmapa.put(page[0], page[1]);
+			server=new HybridServer();
 			}
-			server = new HybridServer(pagesmapa);
-		}
+		
 		server.start();
 	}
+
+	private static boolean validateXMLSchema(File validar, File xml) throws SAXException {
+		SchemaFactory schemaFactory = SchemaFactory
+			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);	
+		  try{
+			  Schema schema = schemaFactory.newSchema(validar);
+			  Validator validator = schema.newValidator();
+			  Source xmlFile = new StreamSource(xml);
+			  validator.validate(xmlFile);
+			  return true;
+			
+		} catch (Exception e) {
+			HTTPResponse name = new HTTPResponse();
+			name.setStatus(HTTPResponseStatus.S400);
+			return false;
+		}
+		
+	}
+	
 }
