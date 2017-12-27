@@ -19,8 +19,6 @@ public class HtmlController {
 	}
 
 	public List<String> listPages() throws SQLException {
-		System.out.println("Entró en el controlador");
-		
 		return this.htmldao.listPages();
 	}
 
