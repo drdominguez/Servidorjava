@@ -9,10 +9,10 @@ import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import es.uvigo.es.dai.hybridserver.configuration.Configuration;
 import es.uvigo.esei.dai.hybridserver.controller.HtmlController;
 import es.uvigo.esei.dai.hybridserver.controller.XmlController;
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAODB;
-import es.uvigo.esei.dai.hybridserver.Configuration;
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAOMap;
 
 

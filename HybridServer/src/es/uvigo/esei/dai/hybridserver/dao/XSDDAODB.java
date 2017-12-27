@@ -7,10 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.uvigo.esei.dai.hybridserver.dao.HTMLDAO;
-import es.uvigo.esei.dai.hybridserver.http.HTTPRequest;
+import es.uvigo.esei.dai.hybridserver.dao.DAO;
 
-public class XSDDAODB implements HTMLDAO {
+public class XSDDAODB implements DAO {
 	
 	private Connection connection;
 	

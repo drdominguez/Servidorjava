@@ -8,19 +8,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
+
+import es.uvigo.es.dai.hybridserver.configuration.Configuration;
 
 
-public class HTMLDAODB implements HTMLDAO {
+public class HTMLDAODB implements DAO {
 	private String user;
 	private String pass;
 	private String url;
 	private String tabla = "HTML";
 
-	public HTMLDAODB(Properties properties) {
-		this.user = properties.getProperty("db.user");
-		this.pass = properties.getProperty("db.password");
-		this.url = properties.getProperty("db.url");
+	public HTMLDAODB(Configuration conf) {
+		this.user = conf.getDbUser();
+		this.pass = conf.getDbPassword();
+		this.url = conf.getDbURL();
 	}
 	
 	public HTMLDAODB(String user, String pass, String url) {

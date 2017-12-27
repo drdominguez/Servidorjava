@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class HTMLDAOMap implements HTMLDAO {
+public class HTMLDAOMap implements DAO {
 	Map<String, String> pages;
 
 	public HTMLDAOMap(Map<String, String> pages) {

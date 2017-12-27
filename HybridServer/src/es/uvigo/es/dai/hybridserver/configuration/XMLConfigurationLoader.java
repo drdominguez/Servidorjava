@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package es.uvigo.esei.dai.hybridserver;
+package es.uvigo.es.dai.hybridserver.configuration;
 
 import java.io.File;
 
@@ -27,7 +27,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import es.uvigo.esei.dai.hybridserver.ServerConfiguration;
 
 
 public class XMLConfigurationLoader {

@@ -10,6 +10,8 @@ import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
 
+import es.uvigo.es.dai.hybridserver.configuration.Configuration;
+import es.uvigo.es.dai.hybridserver.configuration.XMLConfigurationLoader;
 import es.uvigo.esei.dai.hybridserver.http.HTTPResponse;
 import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
 
