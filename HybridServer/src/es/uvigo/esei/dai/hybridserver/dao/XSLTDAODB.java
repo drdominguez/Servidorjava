@@ -1,5 +1,6 @@
 package es.uvigo.esei.dai.hybridserver.dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -89,7 +90,7 @@ public boolean deletePage(String uuid) {
 	}
 	public String getContent(String uuid) {
 		String content = null;
-		String query = "SELECT content FROM XML WHERE uuid=?";
+		String query = "SELECT content FROM XSLT WHERE uuid=?";
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
 			statement.setString(1, uuid);
 			try (ResultSet results = statement.executeQuery()) {
@@ -100,6 +101,23 @@ public boolean deletePage(String uuid) {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		return content;
+	}
+	public String getXSD(String uuid) {
+		String xsd = null;
+		String content = null;
+		String query = "SELECT XSD FROM XSLT WHERE uuid=?";
+		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
+			statement.setString(3, xsd);
+			try (ResultSet results = statement.executeQuery()) {
+				if (results.next()) {
+					content = results.getString("xsd");
+				}
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		 System.out.println("Este es el xsd"+content);
 		return content;
 	}
 }

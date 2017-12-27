@@ -76,7 +76,7 @@ extends AbstractClientRequestWithDatabaseTest {
 		final Map<String, String> contentMap = new HashMap<>();
 		contentMap.put(getResourceName(), content);
 		contentMap.put("xsd", pages[0][2]);
-		
+		System.out.println("url"+url+getResourceName()+contentMap);
 		final String responseContent = postContent(url + getResourceName(), contentMap);
 		final String uuid = extractUUIDFromText(responseContent);
 		assertThat(uuid, is(notNullValue()));

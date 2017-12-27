@@ -29,4 +29,8 @@ public class XsltController {
 	public String getPage(String uuid) throws SQLException {
 		return this.xsltdao.getPage(uuid);
 	}
+
+	public String getXSD(String uuid) {
+		return this.xsltdao.getXSD(uuid);
+	}
 }

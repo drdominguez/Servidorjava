@@ -1,9 +1,22 @@
 package es.uvigo.esei.dai.hybridserver;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+
+import org.apache.derby.tools.sysinfo;
+import org.xml.sax.SAXException;
+
+import es.uvigo.esei.dai.hybridserver.Launcher;
 import es.uvigo.esei.dai.hybridserver.controller.FactoryControllerDB;
 import es.uvigo.esei.dai.hybridserver.controller.HtmlController;
 import es.uvigo.esei.dai.hybridserver.controller.XmlController;
@@ -281,10 +294,13 @@ public class Manager {
 			MIME xslt=MIME.APPLICATION_XML;
 			response.putParameter("Content-Type", xslt.getMime());
 			XsltController pagesxslt=this.create.createXsltController();
+			if(pagesxslt==null) {
+				response.setStatus(HTTPResponseStatus.S500);
+			}else {
 			if (request.getMethod().equals(HTTPRequestMethod.GET)) {
 				String uuid = request.getResourceParameters().get("uuid");
 				String contenido = pagesxslt.getPage(uuid);
-				// Verificar que existan parámetros
+							
 				if (!request.getResourceParameters().isEmpty()) {
 					// Se comprueba que tiene un uuid
 					if (uuid != null) {
@@ -294,6 +310,7 @@ public class Manager {
 							// Sii teniendo uuid tiene contenido
 						} else {
 							response.setContent(contenido);
+							System.out.println("Entra aquiiiiiiiiiiiiiiiiiiiiiiiii");
 							response.setStatus(HTTPResponseStatus.S200);
 						}
 						// Si no tiene uuid
@@ -308,34 +325,30 @@ public class Manager {
 
 			}
 			if (request.getMethod().equals(HTTPRequestMethod.POST)) {
-				String uuid = request.getHeaderParameters().get("uuid");
-				if (uuid == null) {
-					String solucion = request.getContent().substring(0, request.getContent().indexOf("="));
-					if (!solucion.equals("xsd")) {
-						response.setStatus(HTTPResponseStatus.S400);
-					} else {
-						uuid = java.util.UUID.randomUUID().toString();
-						while (uuid == request.getResourceParameters().get("uuid")) {
-							uuid = java.util.UUID.randomUUID().toString();
-						}
-						String content = request.getContent();
-
-						String[] contenidoigual = content.split("=");
-						if (pagesxslt.addPage(uuid, contenidoigual[1],"")) {
-							String uuidHyperlink = "<a href=\"xslt?uuid=" + uuid + "\">" + uuid + "</a>";
-							response.setContent(uuidHyperlink);
-							response.setStatus(HTTPResponseStatus.S200);
-						} else {
-
-							String uuidHyperlink = "<a href=\"xslt?uuid=" + uuid + "\">" + uuid + "</a>";
-							response.setContent(uuidHyperlink);
-							response.setStatus(HTTPResponseStatus.S200);
-						}
-					}
-				} else {
-					response.setStatus(HTTPResponseStatus.S200);
-				}
+				if(request.getResourceParameters().containsKey("xslt")&& request.getResourceParameters().containsKey("xsd")) {
+					if(request.getResourceParameters().get("xsd")!=null) {
+						
+						String xsdl=request.getResourceParameters().get("xsd");
+						String content =request.getContent();
+						String uuid=java.util.UUID.randomUUID().toString();
+						File xmlFile=new File(uuid);
+						File xsdFile = new File (xsdl);
+						response= validateXMLSchema(xsdFile, xmlFile,response);
+						pagesxslt.addPage(uuid, content, xsdl);
+						response.putParameter("xsd", xsdl);
+						String []contenido =content.split("=");
+						content=contenido[2];
+						System.out.println("Aqui esta el uuid "+uuid.toString()+"\ncontenido "+content+"\nxsd "+xsdl);
+						response.putParameter("xslt", content);
+						String uuidHyperlink = "<a href=\"xslt?xslt=" + uuid + "\">" + uuid + "</a>";
+						response.setContent(uuidHyperlink);
+						
+					}else
+					response.setStatus(HTTPResponseStatus.S404);
+				}else
+				response.setStatus(HTTPResponseStatus.S400);
 			}
+			
 			if (request.getMethod().equals(HTTPRequestMethod.DELETE)) {
 				String uuid = request.getResourceParameters().get("uuid");
 				String contenido = pagesxslt.getPage(uuid);
@@ -354,7 +367,7 @@ public class Manager {
 					}
 				}
 			}
-
+			}
 			break;
 		default:
 			// Bad request
@@ -433,6 +446,23 @@ private String listarPaginas(XsltController pages) throws Exception {
 		identificador += "El servidor esta vacío";
 	}
 	return identificador;
+}
+private static HTTPResponse validateXMLSchema(File validar, File xml,HTTPResponse response) throws SAXException {
+	SchemaFactory schemaFactory = SchemaFactory
+		    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);	
+	  try{
+		  Schema schema = schemaFactory.newSchema(validar);
+		  Validator validator = schema.newValidator();
+		  Source xmlFile = new StreamSource(xml);
+		  validator.validate(xmlFile);
+		  response.setStatus(HTTPResponseStatus.S200);
+		  return response;
+		
+	} catch (Exception e) {
+		response.setStatus(HTTPResponseStatus.S404);
+		return response;
+	}
+	
 }
 
 }

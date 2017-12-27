@@ -49,7 +49,7 @@ public class Launcher {
 			
 		} catch (Exception e) {
 			HTTPResponse name = new HTTPResponse();
-			name.setStatus(HTTPResponseStatus.S400);
+			name.setStatus(HTTPResponseStatus.S404);
 			return false;
 		}
 		
