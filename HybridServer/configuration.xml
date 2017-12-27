@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.esei.uvigo.es/dai/hybridserver configuration.xsd">
 	<connections>
 		<http>10001</http>
-		<webservice>http://localhost:20001/hs</webservice>
+		<webservice>http://localhost:2001/hs</webservice>
 		<numClients>50</numClients>
 	</connections>
 	
@@ -16,9 +16,9 @@
 	</database>
 	
 	<servers>
-		<server name="Server 2" wsdl="http://localhost:20002/hs?wsdl"
+		<server name="Server 2" wsdl="http://localhost:1002/hs?wsdl"
 			namespace="http://hybridserver.dai.esei.uvigo.es/" service="HybridServerService"
-			httpAddress="http://localhost:10002/" />
+			httpAddress="http://localhost:1002/" />
 		<server name="Server 3" wsdl="http://localhost:20003/hs?wsdl"
 			namespace="http://hybridserver.dai.esei.uvigo.es/" service="HybridServerService"
 			httpAddress="http://localhost:10003/" />

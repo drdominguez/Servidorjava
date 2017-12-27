@@ -86,8 +86,10 @@ public class HTTPResponse {
 		if (content == "") {
 			sol = sol + "\r\n";
 		}
+		System.out.println("11111111" + sol);
 		CharSequence solucion = sol.subSequence(0, sol.length());
 		writer.append(solucion);
+		System.out.println("22222222" + parameters.get("Content-Type"));
 		writer.flush();
 	}
 
