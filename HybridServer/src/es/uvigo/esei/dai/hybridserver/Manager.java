@@ -1,6 +1,7 @@
 package es.uvigo.esei.dai.hybridserver;
 
 import java.io.File;
+import java.io.StringReader;
 import java.util.Iterator;
 import java.util.List;
 
@@ -151,11 +152,21 @@ public class Manager {
 									XsdController xsdcontroller=create.createXsdController();
 									XsltController xsltcontroller=create.createXsltController();
 									String uuidxsd=xsltcontroller.getXSD(uuidxslt);
-									if() {}
-								}
-								}
+									if(uuidxsd!=null) {
+										String contentxsd=xsdcontroller.getPage(uuidxsd);
+										String content=pagesxml.getPage(uuid);
+										if(validateXMLSchema(contentxsd, content)) {
+											 MIME html = MIME.TEXT_HTML;
+											response.putParameter("Content-Type", html.getMime());
+											response.setStatus(HTTPResponseStatus.S200);
+										}else response.setStatus(HTTPResponseStatus.S400);
+											}else response.setStatus(HTTPResponseStatus.S400);
+									}else response.setStatus(HTTPResponseStatus.S400);
+								}else {
+								
 								response.setContent(contenido);
 								response.setStatus(HTTPResponseStatus.S200);
+								}
 							}
 							// Si no tiene uuid
 						} else {
@@ -458,18 +469,17 @@ public class Manager {
 		return identificador;
 	}
 
-	private static boolean validateXMLSchema(File validar, File xml) throws SAXException {
+	private static boolean validateXMLSchema(String xsd, String xml) throws SAXException {
 		SchemaFactory schemaFactory = SchemaFactory
 			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);	
 		  try{
-			  Schema schema = schemaFactory.newSchema(validar);
+			  Schema schema = schemaFactory.newSchema(new StreamSource(new StringReader(xsd)));
 			  Validator validator = schema.newValidator();
-			  Source xmlFile = new StreamSource(xml);
+			  Source xmlFile = new StreamSource(new StringReader(xml));
 			  validator.validate(xmlFile);
 			  return true;
 			
 		} catch (Exception e) {
-			HTTPResponse name = new HTTPResponse();
 			return false;
 		}
 		
