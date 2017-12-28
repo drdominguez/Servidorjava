@@ -9,7 +9,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import es.uvigo.es.dai.hybridserver.configuration.Configuration;
+import es.uvigo.esei.dai.hybridserver.configuration.Configuration;
 import es.uvigo.esei.dai.hybridserver.controller.FactoryControllerDB;
 
 

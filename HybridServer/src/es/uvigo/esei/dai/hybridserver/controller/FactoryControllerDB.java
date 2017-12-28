@@ -10,8 +10,8 @@ import java.util.*;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-import es.uvigo.es.dai.hybridserver.configuration.Configuration;
-import es.uvigo.es.dai.hybridserver.configuration.ServerConfiguration;
+import es.uvigo.esei.dai.hybridserver.configuration.Configuration;
+import es.uvigo.esei.dai.hybridserver.configuration.ServerConfiguration;
 
 public class FactoryControllerDB implements FactoryController {
 private Connection connect;

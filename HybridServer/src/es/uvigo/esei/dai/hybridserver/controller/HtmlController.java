@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
-import es.uvigo.es.dai.hybridserver.configuration.ServerConfiguration;
+import es.uvigo.esei.dai.hybridserver.configuration.ServerConfiguration;
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAODB;
 
 public class HtmlController {
