@@ -91,12 +91,10 @@ public class HTTPResponse {
 			
 //			content.contains(s)
 			if(parameters.get("Content-Type")!="application/xml"&&parameters.get("Content-Type")!="application/x-www-form-urlencoded"&& parameters.get("Content-Type")!="text/html") {
-				System.out.println(parameters.get("Content-Type"));
 				sol = sol + "Content-Length: "+content.length()+"\r\n\r\n" + content;
 			}
 			else
 				sol =sol+"\r\n\r\n" + content;
-			System.out.println(sol);
 			}
 		else { 
 			sol = sol + "\r\n";

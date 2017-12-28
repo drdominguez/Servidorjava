@@ -2,11 +2,10 @@ package es.uvigo.esei.dai.hybridserver.controller;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+import java.util.Iterator;
 import java.util.List;
 
-
-
+import es.uvigo.es.dai.hybridserver.configuration.ServerConfiguration;
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAODB;
 
 public class HtmlController {
@@ -14,7 +13,7 @@ public class HtmlController {
 
 	HTMLDAODB htmldao;
 
-	public HtmlController(Connection conect) {
+	public HtmlController(Connection conect,Iterator<ServerConfiguration> it) {
 	this.htmldao=new HTMLDAODB(conect);
 	}
 

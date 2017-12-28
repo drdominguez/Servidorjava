@@ -29,4 +29,7 @@ public class XmlController {
 	public String getPage(String uuid) throws SQLException {
 		return this.xmldao.getPage(uuid);
 	}
+	public boolean exist(String uuid) throws SQLException {
+		return this.xmldao.exists(uuid);
+	}
 }

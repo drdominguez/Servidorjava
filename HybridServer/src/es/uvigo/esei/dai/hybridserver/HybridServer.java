@@ -1,6 +1,7 @@
 package es.uvigo.esei.dai.hybridserver;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
@@ -23,7 +24,12 @@ public class HybridServer {
 		numClient=50;
 		SERVICE_PORT = 8888;
 		Configuration conf=new Configuration();
-		pages=new FactoryControllerDB(conf);
+		try {
+			pages=new FactoryControllerDB(conf);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public HybridServer(Properties properties) throws SQLException {
 		numClient=Integer.parseInt(properties.get("numClients").toString());
@@ -34,7 +40,12 @@ public class HybridServer {
 		conf.setDbUser(properties.getProperty("db.user"));
 		conf.setDbPassword(properties.getProperty("db.password"));
 		conf.setDbURL(properties.getProperty("db.url"));
-		pages=new FactoryControllerDB(conf);
+		try {
+			pages=new FactoryControllerDB(conf);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
@@ -42,7 +53,12 @@ public class HybridServer {
 	public HybridServer(Configuration load) {
 		numClient=load.getNumClients();
 		SERVICE_PORT = load.getHttpPort();
-		pages=new FactoryControllerDB(load);
+		try {
+			pages=new FactoryControllerDB(load);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

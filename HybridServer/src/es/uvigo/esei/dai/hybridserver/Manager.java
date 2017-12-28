@@ -151,9 +151,9 @@ public class Manager {
 							} else {
 								if(request.getResourceParameters().containsKey("xslt")) {
 									String uuidxslt=request.getResourceParameters().get("xslt");
-								if(uuidxslt!=null) {
-									XsdController xsdcontroller=create.createXsdController();
 									XsltController xsltcontroller=create.createXsltController();
+								if(uuidxslt!=null && xsltcontroller.exist(uuidxslt)) {
+									XsdController xsdcontroller=create.createXsdController();
 									String uuidxsd=xsltcontroller.getXSD(uuidxslt);
 									String contentxslt=xsltcontroller.getPage(uuidxslt);
 									if(uuidxsd!=null) {
@@ -166,7 +166,7 @@ public class Manager {
 											response.putParameter("Content-Type", html.getMime());
 											response.setStatus(HTTPResponseStatus.S200);
 										}else response.setStatus(HTTPResponseStatus.S400);
-											}else response.setStatus(HTTPResponseStatus.S404);
+											}else response.setStatus(HTTPResponseStatus.S400);
 									}else response.setStatus(HTTPResponseStatus.S404);
 								}else {
 								

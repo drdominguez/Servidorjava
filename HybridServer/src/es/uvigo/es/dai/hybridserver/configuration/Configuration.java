@@ -24,7 +24,6 @@ public class Configuration {
 	private int httpPort;
 	private int numClients;
 	private String webServiceURL;
-	
 	private String dbUser;
 	private String dbPassword;
 	private String dbURL;

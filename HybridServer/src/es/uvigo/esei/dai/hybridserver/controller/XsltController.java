@@ -33,4 +33,7 @@ public class XsltController {
 	public String getXSD(String uuid) {
 		return this.xsltdao.getXSD(uuid);
 	}
+	public boolean exist(String uuid) throws SQLException {
+		return this.xsltdao.exists(uuid);
+	}
 }
