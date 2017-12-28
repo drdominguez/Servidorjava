@@ -18,7 +18,7 @@ private Connection connect;
 private Map<ServerConfiguration,Service> remoteServices;
 private Iterator<ServerConfiguration> it;
 private Configuration conf;
-	public FactoryControllerDB(Configuration conf) throws MalformedURLException {
+	public FactoryControllerDB(Configuration conf)  {
 		this.conf=conf;
 		try {
 			this.connect = DriverManager.getConnection(conf.getDbURL(),conf.getDbUser(),conf.getDbPassword());

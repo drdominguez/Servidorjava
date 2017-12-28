@@ -20,16 +20,13 @@ public class HybridServer {
 	private FactoryControllerDB pages;
 	private int numClient=50;
 
-	public HybridServer(){
+	public HybridServer() {
 		numClient=50;
 		SERVICE_PORT = 8888;
 		Configuration conf=new Configuration();
-		try {
+		
 			pages=new FactoryControllerDB(conf);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 	public HybridServer(Properties properties) throws SQLException {
 		numClient=Integer.parseInt(properties.get("numClients").toString());
@@ -40,12 +37,8 @@ public class HybridServer {
 		conf.setDbUser(properties.getProperty("db.user"));
 		conf.setDbPassword(properties.getProperty("db.password"));
 		conf.setDbURL(properties.getProperty("db.url"));
-		try {
 			pages=new FactoryControllerDB(conf);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 
@@ -53,12 +46,9 @@ public class HybridServer {
 	public HybridServer(Configuration load) {
 		numClient=load.getNumClients();
 		SERVICE_PORT = load.getHttpPort();
-		try {
+		
 			pages=new FactoryControllerDB(load);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 	}
 
