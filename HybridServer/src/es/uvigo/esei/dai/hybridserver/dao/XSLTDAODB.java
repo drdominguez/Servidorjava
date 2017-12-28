@@ -107,10 +107,11 @@ public boolean deletePage(String uuid) {
 		String content = null;
 		String query = "SELECT XSD FROM XSLT WHERE uuid=?";
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
-			statement.setString(3, xsd);
+			statement.setString(1, uuid);
 			try (ResultSet results = statement.executeQuery()) {
 				if (results.next()) {
 					content = results.getString("xsd");
+					System.out.println(content);
 				}
 			}
 		} catch (SQLException e) {

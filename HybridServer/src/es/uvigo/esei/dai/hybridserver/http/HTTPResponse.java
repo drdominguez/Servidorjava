@@ -6,8 +6,11 @@ import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
+import es.uvigo.esei.dai.hybridserver.http.MIME;
 public class HTTPResponse {
+	private MIME htmlmime= MIME.APPLICATION_XML;
+	private MIME extmime= MIME.FORM;
+	private MIME xmlmime=MIME.TEXT_HTML;
 	private String version = "";
 	private HTTPResponseStatus get;
 	private String content = "";
@@ -73,21 +76,30 @@ public class HTTPResponse {
 	public void print(Writer writer) throws IOException {
 
 		String sol = getVersion() + " " + get.toString().substring(1) + " OK\r\n";
+		
 		if (!parameters.isEmpty()) {//Si tiene parametros
-			if(parameters.get("Content-Type")!=null) {//Si tiene content-type
+			if(parameters.containsKey("Content-Type")) {//Si tiene content-type
 				sol = sol + "Content-Type: " + parameters.get("Content-Type");
 			}
-			if(parameters.get("Content-Encoding")!=null) {
+			if(parameters.containsKey("Content-Encoding")) {
 					sol=sol+"\r\n" + "Content-Encoding: "
 					+ parameters.get("Content-Encoding");
 				}
-			if (parameters.get("Content-Language")!=null) {
+			if (parameters.containsKey("Content-Language")) {
 						sol=sol+"\r\n"+"Content-Language: "
 						+ parameters.get("Content-Language") + "\r\n";
 					}
 		} //En el caso de que no tengaparametros
 		if (content != "") {
-			sol = sol + "\r\n\r\n" + content;
+			
+//			content.contains(s)
+			if(parameters.get("Content-Type")!="application/xml"&&parameters.get("Content-Type")!="application/x-www-form-urlencoded"&& parameters.get("Content-Type")!="text/html") {
+				System.out.println(parameters.get("Content-Type"));
+				sol = sol + "Content-Length: "+content.length()+"\r\n\r\n" + content;
+			}
+			else
+				sol =sol+"\r\n\r\n" + content;
+			System.out.println(sol);
 			}
 		else { 
 			sol = sol + "\r\n";
