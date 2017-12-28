@@ -6,11 +6,7 @@ import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import es.uvigo.esei.dai.hybridserver.http.MIME;
 public class HTTPResponse {
-	private MIME htmlmime= MIME.APPLICATION_XML;
-	private MIME extmime= MIME.FORM;
-	private MIME xmlmime=MIME.TEXT_HTML;
 	private String version = "";
 	private HTTPResponseStatus get;
 	private String content = "";
