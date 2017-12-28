@@ -310,7 +310,6 @@ public class Manager {
 							// Sii teniendo uuid tiene contenido
 						} else {
 							response.setContent(contenido);
-							System.out.println("Entra aquiiiiiiiiiiiiiiiiiiiiiiiii");
 							response.setStatus(HTTPResponseStatus.S200);
 						}
 						// Si no tiene uuid
@@ -325,24 +324,23 @@ public class Manager {
 
 			}
 			if (request.getMethod().equals(HTTPRequestMethod.POST)) {
-				if(request.getResourceParameters().containsKey("xslt")&& request.getResourceParameters().containsKey("xsd")) {
-					if(request.getResourceParameters().get("xsd")!=null) {
-						
+				if(request.getResourceParameters().containsKey("xslt")&& request.getResourceParameters().containsKey("xsd")) {//AQUÍ COMPRUEBO SI LA REQUEST TIENE XSLT Y XSD
+					if(request.getResourceParameters().get("xsd")!=null) {//AQUI COMPRUEBO SI ME HAN PASADO UN XSD QUE NO ES NULL
+						XsdController xsldexist=create.createXsdController();
 						String xsdl=request.getResourceParameters().get("xsd");
+						if(xsldexist.exist(xsdl)) {//AQUÍ COMPRUEBO SI EXISTE EL XSD EN LA BD
 						String content =request.getContent();
 						String uuid=java.util.UUID.randomUUID().toString();
-						File xmlFile=new File(uuid);
-						File xsdFile = new File (xsdl);
-						response= validateXMLSchema(xsdFile, xmlFile,response);
-						pagesxslt.addPage(uuid, content, xsdl);
+						response.setStatus(HTTPResponseStatus.S200);
 						response.putParameter("xsd", xsdl);
-						String []contenido =content.split("=");
-						content=contenido[2];
-						System.out.println("Aqui esta el uuid "+uuid.toString()+"\ncontenido "+content+"\nxsd "+xsdl);
+						String []contenido =content.split("=");//EN CONTENIDO TENEMOS TAMBIEN EL XSD Y SOLO DEBERÍAMOS TENER EL CONTENIDO DEL XSLT TENEMOS ALGO DEL ESTILO XSD=JCDBHUVCW XSLT=????????????
+						content=contenido[2];//AQUI COGEMOS SOLO EL CONTENIDO DEL XSLT QUE ESTA EN LA SEGUNDA POSICION DEL ARRAY
+						pagesxslt.addPage(uuid, content, xsdl);
 						response.putParameter("xslt", content);
-						String uuidHyperlink = "<a href=\"xslt?xslt=" + uuid + "\">" + uuid + "</a>";
+						String uuidHyperlink = "<a href=\"xslt?uuid=" + uuid + "\">" + uuid + "</a>";
 						response.setContent(uuidHyperlink);
-						
+						}else
+						response.setStatus(HTTPResponseStatus.S404);
 					}else
 					response.setStatus(HTTPResponseStatus.S404);
 				}else
@@ -446,23 +444,6 @@ private String listarPaginas(XsltController pages) throws Exception {
 		identificador += "El servidor esta vacío";
 	}
 	return identificador;
-}
-private static HTTPResponse validateXMLSchema(File validar, File xml,HTTPResponse response) throws SAXException {
-	SchemaFactory schemaFactory = SchemaFactory
-		    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);	
-	  try{
-		  Schema schema = schemaFactory.newSchema(validar);
-		  Validator validator = schema.newValidator();
-		  Source xmlFile = new StreamSource(xml);
-		  validator.validate(xmlFile);
-		  response.setStatus(HTTPResponseStatus.S200);
-		  return response;
-		
-	} catch (Exception e) {
-		response.setStatus(HTTPResponseStatus.S404);
-		return response;
-	}
-	
 }
 
 }

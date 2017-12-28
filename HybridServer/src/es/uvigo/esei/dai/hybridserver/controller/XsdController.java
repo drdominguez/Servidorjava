@@ -29,4 +29,7 @@ public class XsdController {
 	public String getPage(String uuid) throws SQLException {
 		return this.xsddao.getPage(uuid);
 	}
+	public boolean exist(String uuid) throws SQLException {
+		return this.xsddao.exists(uuid);
+	}
 }
