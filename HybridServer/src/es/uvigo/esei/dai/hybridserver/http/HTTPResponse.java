@@ -6,6 +6,7 @@ import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 public class HTTPResponse {
 	private String version = "";
 	private HTTPResponseStatus get;
