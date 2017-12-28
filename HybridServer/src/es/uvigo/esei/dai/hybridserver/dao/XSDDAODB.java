@@ -32,14 +32,29 @@ public class XSDDAODB implements DAO {
 @Override
 	public boolean deletePage(String uuid) {
 		String query = "DELETE FROM XSD WHERE uuid=?";
+		
 		try (PreparedStatement statement = this.connection.prepareStatement(query)) {
 			statement.setString(1,uuid);
 			statement.executeUpdate();
+			deleteXslt(uuid);//Elimino los xslt que tengan el xsd asociado
 			return true;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		
 	}
+
+public boolean deleteXslt(String xsd) {
+	String query = "DELETE FROM XSLT WHERE xsd=?";//Elimino los Xslt con el xsd deseado
+	
+	try (PreparedStatement statement = this.connection.prepareStatement(query)) {
+		statement.setString(1,xsd);
+		statement.executeUpdate();
+		return true;
+	} catch (SQLException e) {
+		throw new RuntimeException(e);
+	}
+}
 
 	@Override
 	public String getPage(String uuid ) {
