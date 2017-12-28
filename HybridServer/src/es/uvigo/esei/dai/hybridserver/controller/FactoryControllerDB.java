@@ -17,18 +17,13 @@ public class FactoryControllerDB implements FactoryController {
 private Connection connect;
 private Map<ServerConfiguration,Service> remoteServices;
 private Iterator<ServerConfiguration> it;
+private Configuration conf;
 	public FactoryControllerDB(Configuration conf) throws MalformedURLException {
+		this.conf=conf;
 		try {
 			this.connect = DriverManager.getConnection(conf.getDbURL(),conf.getDbUser(),conf.getDbPassword());
-			this.it=conf.getServers().iterator();
-			while(it.hasNext()) {
-				ServerConfiguration server=it.next();
-				URL url = new URL(server.getWsdl());
-	            QName name = new QName(server.getNamespace(), server.getService());
-	            Service service = Service.create(url, name);
-	            this.remoteServices.put(server, service);
-
-			}
+			
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,7 +51,16 @@ private Iterator<ServerConfiguration> it;
 	public XsltController createXsltController() {
 		return new XsltController(this.connect);
 	}
-	public Map<ServerConfiguration,Service> getRemotes() {
+	public Map<ServerConfiguration,Service> getRemotes() throws MalformedURLException {
+		this.it=this.conf.getServers().iterator();
+		while(it.hasNext()) {
+			ServerConfiguration server=it.next();
+			URL url = new URL(server.getWsdl());
+            QName name = new QName(server.getNamespace(), server.getService());
+            Service service = Service.create(url, name);
+            this.remoteServices.put(server, service);
+
+		}
 		return this.remoteServices;
 	}
 
