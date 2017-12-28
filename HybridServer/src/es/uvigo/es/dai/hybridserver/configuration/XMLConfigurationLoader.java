@@ -38,8 +38,6 @@ public class XMLConfigurationLoader {
 		builder = factory.newDocumentBuilder();
 		Document dom = builder.parse(xmlFile);
 		dom.normalize();
-		
-		
 
 		NodeList ppal = dom.getElementsByTagName("configuration");
 		Node configurationNode = ppal.item(0);
