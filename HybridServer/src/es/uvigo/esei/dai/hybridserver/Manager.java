@@ -2,10 +2,16 @@ package es.uvigo.esei.dai.hybridserver;
 
 
 import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.List;
 import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -149,11 +155,14 @@ public class Manager {
 									XsdController xsdcontroller=create.createXsdController();
 									XsltController xsltcontroller=create.createXsltController();
 									String uuidxsd=xsltcontroller.getXSD(uuidxslt);
+									String contentxslt=xsltcontroller.getPage(uuidxslt);
 									if(uuidxsd!=null) {
 										String contentxsd=xsdcontroller.getPage(uuidxsd);
-										String content=pagesxml.getPage(uuid);
-										if(validateXMLSchema(contentxsd, content)) {
+										String contentxml=pagesxml.getPage(uuid);
+										if(validateXMLSchema(contentxsd, contentxml)) {
 											 MIME html = MIME.TEXT_HTML;
+											 String resultado= transform(contentxslt, contentxml);
+											 response.setContent(resultado);
 											response.putParameter("Content-Type", html.getMime());
 											response.setStatus(HTTPResponseStatus.S200);
 										}else response.setStatus(HTTPResponseStatus.S400);
@@ -481,5 +490,25 @@ public class Manager {
 		}
 		
 	}
+	public static String transform( String xslt,String xml) {
+        TransformerFactory factory = TransformerFactory.newInstance();
+        Transformer transform = null;
+		try {
+			transform = factory.newTransformer(new StreamSource(new StringReader(xslt)));
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        StringWriter writer = new StringWriter();
+
+        try {
+        	transform.transform(new StreamSource(new StringReader(xml)), new StreamResult(writer));
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+        return writer.toString();
+    }
 
 }
