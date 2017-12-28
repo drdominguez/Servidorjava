@@ -3,7 +3,6 @@ package es.uvigo.esei.dai.hybridserver.http;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,6 @@ public class HTTPResponse {
 	private HTTPResponseStatus get;
 	private String content = "";
 	private Map<String, String> parameters = new LinkedHashMap<String, String>();
-
 
 	public HTTPResponse() {
 		this.version = HTTPHeaders.HTTP_1_1.getHeader();
@@ -68,38 +66,33 @@ public class HTTPResponse {
 	}
 
 	public List<String> listParameters() {
-		
-		return (List<String>)parameters.values();
+
+		return (List<String>) parameters.values();
 	}
 
 	public void print(Writer writer) throws IOException {
 
 		String sol = getVersion() + " " + get.toString().substring(1) + " OK\r\n";
-		if (!parameters.isEmpty()) {
-			int num=0;
-			
-			if(parameters.get("Content-Type")!=null) {
-					sol = sol + "Content-Type: " + parameters.get("Content-Type")+"\r\n";
-					parameters.remove("Content-Type");
-				}
-			else if(parameters.get("Content-Encoding")!=null) {
+		if (!parameters.isEmpty()) {//Si tiene parametros
+			if(parameters.get("Content-Type")!=null) {//Si tiene content-type
+				sol = sol + "Content-Type: " + parameters.get("Content-Type");
+			}
+			if(parameters.get("Content-Encoding")!=null) {
 					sol=sol+"\r\n" + "Content-Encoding: "
-							+ parameters.get("Content-Encoding");
-					parameters.remove("Content-Encoding");
+					+ parameters.get("Content-Encoding");
 				}
-			else if (parameters.get("Content-Language")!=null) {
-					sol=sol+"\r\n"+"Content-Language: "
-							+ parameters.get("Content-Language") + "\r\n";
-					parameters.remove("Content-Language");
-				}
-				
-		}
+			if (parameters.get("Content-Language")!=null) {
+						sol=sol+"\r\n"+"Content-Language: "
+						+ parameters.get("Content-Language") + "\r\n";
+					}
+		} //En el caso de que no tengaparametros
 		if (content != "") {
-			sol = sol + "Content-Length: " + content.length() + "\r\n\r\n" + content;
-		}
-		if (content == "") {
+			sol = sol + "\r\n\r\n" + content;
+			}
+		else { 
 			sol = sol + "\r\n";
-		}
+			}
+		
 		CharSequence solucion = sol.subSequence(0, sol.length());
 		writer.append(solucion);
 		writer.flush();
