@@ -325,10 +325,12 @@ public class Manager {
 			}
 			if (request.getMethod().equals(HTTPRequestMethod.POST)) {
 				if(request.getResourceParameters().containsKey("xslt")&& request.getResourceParameters().containsKey("xsd")) {//AQUÍ COMPRUEBO SI LA REQUEST TIENE XSLT Y XSD
-					if(request.getResourceParameters().get("xsd")!=null) {//AQUI COMPRUEBO SI ME HAN PASADO UN XSD QUE NO ES NULL
+					if(request.getResourceParameters().get("xsd")!=null &&request.getResourceParameters().get("xslt")!=null ) {//AQUI COMPRUEBO SI ME HAN PASADO UN XSD QUE NO ES NULL
 						XsdController xsldexist=create.createXsdController();
 						String xsdl=request.getResourceParameters().get("xsd");
 						if(xsldexist.exist(xsdl)) {//AQUÍ COMPRUEBO SI EXISTE EL XSD EN LA BD
+						String xsdvalidacion=xsldexist.getPage(xsdl);
+						File xsdFile=new File(xsdvalidacion);
 						String content =request.getContent();
 						String uuid=java.util.UUID.randomUUID().toString();
 						response.setStatus(HTTPResponseStatus.S200);
