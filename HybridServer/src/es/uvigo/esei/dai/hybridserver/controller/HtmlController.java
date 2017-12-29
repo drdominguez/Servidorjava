@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.Map;
+import es.uvigo.esei.dai.hybridserver.WebServices;
 import es.uvigo.esei.dai.hybridserver.configuration.ServerConfiguration;
 import es.uvigo.esei.dai.hybridserver.dao.HTMLDAODB;
 
@@ -12,13 +13,22 @@ public class HtmlController {
 
 
 	HTMLDAODB htmldao;
-
-	public HtmlController(Connection conect,Iterator<ServerConfiguration> it) {
+	private Map<ServerConfiguration, WebServices> remoteServices;
+	public HtmlController(Connection conect,remoteServers serv) {
 	this.htmldao=new HTMLDAODB(conect);
+	this.remoteServices=serv.getRemotes();
 	}
 
 	public List<String> listPages() throws SQLException {
-		return this.htmldao.listPages();
+		List<String> result=this.htmldao.listPages();
+		Iterator<String> it;
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+			it=entry.getValue().uuidHTML().iterator();
+			while(it.hasNext())
+			result.add(it.next())  ;			
+		}
+		
+		return result;
 	}
 
 	public boolean addPage(String uuid, String content) throws SQLException {
@@ -30,6 +40,20 @@ public class HtmlController {
 	}
 
 	public String getPage(String uuid) throws SQLException {
-		return this.htmldao.getPage(uuid);
+		String content=this.htmldao.getPage(uuid);
+//		this.remoteServices.forEach((k,v) -> 
+//		content=v.contentHTML(uuid),
+//		content!=null
+//				);
+		if(content==null) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+			content = entry.getValue().contentHTML(uuid);
+			if (content != null)
+				break;
+			
+		}
+		}
+        
+		return content;
 	}
 }

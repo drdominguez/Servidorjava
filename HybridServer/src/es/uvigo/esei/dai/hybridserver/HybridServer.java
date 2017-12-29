@@ -8,6 +8,8 @@ import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.xml.ws.Endpoint;
+
 import es.uvigo.esei.dai.hybridserver.configuration.Configuration;
 import es.uvigo.esei.dai.hybridserver.controller.FactoryControllerDB;
 
@@ -18,6 +20,9 @@ public class HybridServer {
 	private boolean stop;
 	private FactoryControllerDB pages;
 	private int numClient=50;
+	private String url;
+	private Endpoint endpoint;
+	
 
 	public HybridServer() {
 		numClient=50;
@@ -45,8 +50,8 @@ public class HybridServer {
 	public HybridServer(Configuration load) {
 		numClient=load.getNumClients();
 		SERVICE_PORT = load.getHttpPort();
-		
-			pages=new FactoryControllerDB(load);
+		url = load.getWebServiceURL();
+		pages=new FactoryControllerDB(load);
 		
 		
 	}
@@ -56,7 +61,9 @@ public class HybridServer {
 	}
 	public void start() {
 		ExecutorService threadPool = Executors.newFixedThreadPool(numClient);
-		
+		 if (this.url != null) {
+	            this.endpoint = Endpoint.publish(url, new WebServicesImpl(pages));
+	        }
 		this.serverThread = new Thread() {
 			@Override
 			public void run() {
