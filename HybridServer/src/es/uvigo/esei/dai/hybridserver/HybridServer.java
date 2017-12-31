@@ -21,9 +21,6 @@ public class HybridServer {
 	private FactoryControllerDB pages;
 	private int numClient=50;
 	private String url;
-	private Endpoint endpoint;
-	
-
 	public HybridServer() {
 		numClient=50;
 		SERVICE_PORT = 8888;
@@ -62,7 +59,7 @@ public class HybridServer {
 	public void start() {
 		ExecutorService threadPool = Executors.newFixedThreadPool(numClient);
 		 if (this.url != null) {
-	            this.endpoint = Endpoint.publish(url, new WebServicesImpl(pages));
+	            Endpoint.publish(url, new WebServicesImpl(pages));
 	        }
 		this.serverThread = new Thread() {
 			@Override

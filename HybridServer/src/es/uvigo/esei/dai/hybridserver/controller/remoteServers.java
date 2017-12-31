@@ -14,20 +14,17 @@ import es.uvigo.esei.dai.hybridserver.configuration.Configuration;
 import es.uvigo.esei.dai.hybridserver.configuration.ServerConfiguration;
 
 public class remoteServers {
-	private Configuration conf;
 	private Map<ServerConfiguration,WebServices> remoteServices;
 	public remoteServers(Configuration conf) {
 		this.remoteServices=new LinkedHashMap<>();
-		this.conf=conf;
-	}
-	public Map<ServerConfiguration,WebServices> getRemotes()  {
-		Iterator <ServerConfiguration>it=this.conf.getServers().iterator();
+		Iterator <ServerConfiguration>it=conf.getServers().iterator();
 		while(it.hasNext()) {
 			ServerConfiguration server=it.next();
 			URL url;
 			try {
 				url = new URL(server.getWsdl());
-				QName name = new QName(server.getNamespace(), server.getService());
+				QName name = new QName(server.getNamespace(), server.getService()); 
+				//System.out.println("\n\n\n"+server.getNamespace()+"\n\n\n");
 				Service service = Service.create(url, name);
 				WebServices webservice =service.getPort(WebServices.class);
 				this.remoteServices.put(server, webservice);
@@ -36,6 +33,9 @@ public class remoteServers {
 			}
 
 		}
+	}
+	public Map<ServerConfiguration,WebServices> getRemotes()  {
+		
 		return this.remoteServices;
 	}
 
