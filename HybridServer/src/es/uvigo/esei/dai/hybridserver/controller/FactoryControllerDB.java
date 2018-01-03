@@ -7,10 +7,10 @@ import es.uvigo.esei.dai.hybridserver.configuration.Configuration;
 
 public class FactoryControllerDB implements FactoryController {
 private Connection connect;
-private remoteServers serv;
+private RemoteServers serv;
 
 	public FactoryControllerDB(Configuration conf)  {
-		serv=new remoteServers(conf);
+		serv=new RemoteServers(conf);
 		try {
 			this.connect = DriverManager.getConnection(conf.getDbURL(),conf.getDbUser(),conf.getDbPassword());
 			

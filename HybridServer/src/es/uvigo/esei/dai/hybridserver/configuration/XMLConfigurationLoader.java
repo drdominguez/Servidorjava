@@ -30,23 +30,30 @@ import org.w3c.dom.NodeList;
 
 
 public class XMLConfigurationLoader {
+	private int httpPort;
+	private int numClients;
+	private String webServiceURL;
+	
+	private String userdb;
+	private String passworddb;
+	private String dbURL;
+	
+	private List<ServerConfiguration> servers;
+	
 	public Configuration load(File xmlFile)
 	throws Exception {
-		/*Podemos validar aqui o hacerlo antes de entrar*/				
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;
 		builder = factory.newDocumentBuilder();
 		Document dom = builder.parse(xmlFile);
 		dom.normalize();
 
-		NodeList ppal = dom.getElementsByTagName("configuration");
-		Node configurationNode = ppal.item(0);
+		NodeList nodelist = dom.getElementsByTagName("configuration");
+		Node configurationNode = nodelist.item(0);
 		NodeList items = configurationNode.getChildNodes();
 		
 		int numPartsConfiguration=0;
-		/*Recorremos los nodos para acceder a sus valores.*/
 			for(int i=0 ; i<items.getLength(); i++){
-				/*Comprobamos esto porque tambien nos devuelve como nodo #text*/
 				if(items.item(i).getNodeType() == Node.ELEMENT_NODE){
 					switch(items.item(i).getNodeName()){
 					case "connections": loadConnections(items.item(i));
@@ -60,22 +67,20 @@ public class XMLConfigurationLoader {
 										break;
 					}
 				
-			}//if
-		}//for
+			}
+		}
 		
 		if(numPartsConfiguration == 3){
 			Configuration config = new Configuration(this.httpPort, this.numClients,
-														this.webServiceURL, this.dbUser, 
-															this.dbPassword, this.dbURL, 
+														this.webServiceURL, this.userdb, 
+															this.passworddb, this.dbURL, 
 																this.servers);
 			return config;
 		
 		}else throw new Exception();
-		/*a partir de un xml debe generar un configuration*/
 		
 	}
 	
-	/*Se encarga de la parte de parametros del server*/
 	private void loadConnections(Node node) throws Exception{
 		int numParameterConnection=0;
 		NodeList connectionParameters= node.getChildNodes();
@@ -100,7 +105,6 @@ public class XMLConfigurationLoader {
 		if(numParameterConnection != 3) throw new Exception();
 	}
 	
-	/*Se encarga de obtener parametros de la base de datos*/
 	private void loadDatabase(Node node) throws Exception{
 		int numParametersDB = 0;
 		NodeList databaseParameters = node.getChildNodes();
@@ -108,11 +112,11 @@ public class XMLConfigurationLoader {
 			Node parameter = databaseParameters.item(i);
 				if(parameter.getNodeType() == Node.ELEMENT_NODE){
 					switch(parameter.getNodeName()){
-					case "user": this.dbUser= parameter.getTextContent();
+					case "user": this.userdb= parameter.getTextContent();
 								 numParametersDB++;
 								 break;
 					
-					case "password": this.dbPassword= parameter.getTextContent();
+					case "password": this.passworddb= parameter.getTextContent();
 									numParametersDB++;
 									break;
 					
@@ -125,7 +129,6 @@ public class XMLConfigurationLoader {
 		if(numParametersDB != 3) throw new Exception();
 	}
 	
-	/*Se encarga de cargar los servers para P2P*/
 	private void loadServers(Node node) throws Exception{
 		int numParametersPerServer=0;
 		this.servers = new ArrayList<ServerConfiguration>();
@@ -161,13 +164,10 @@ public class XMLConfigurationLoader {
 												numParametersPerServer++;
 												break;
 												
-							/*Deberia de controlar aqui si no es ninguna y soltar una excepcion??
-							 * El documento viene validad asi que no deberia de ser necesario*/
-						}//fin switch
-					}//fin if
-				}//fin for(j)
+						}
+					}
+				}
 				
-				//Ya tenemos todos los valores del serverConfiguration podemos meterlo en la lista.
 				if(numParametersPerServer==5){
 					this.servers.add(serverConfiguration);
 					numParametersPerServer=0;
@@ -177,17 +177,6 @@ public class XMLConfigurationLoader {
 	}
 	
 	
-	/*Almacenamos los valores para crear un Configuration.
-	 * Podriamos crear uno sin parametros y settear pero creo que 
-	 * son muchas más operaciones*/
-	private int httpPort;
-	private int numClients;
-	private String webServiceURL;
 	
-	private String dbUser;
-	private String dbPassword;
-	private String dbURL;
-	
-	private List<ServerConfiguration> servers;
 	
 }

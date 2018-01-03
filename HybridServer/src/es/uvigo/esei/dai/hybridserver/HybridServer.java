@@ -21,6 +21,8 @@ public class HybridServer {
 	private FactoryControllerDB pages;
 	private int numClient=50;
 	private String url;
+	private Endpoint endpoint;
+	private Configuration conf;
 	public HybridServer() {
 		numClient=50;
 		SERVICE_PORT = 8888;
@@ -49,7 +51,7 @@ public class HybridServer {
 		SERVICE_PORT = load.getHttpPort();
 		url = load.getWebServiceURL();
 		pages=new FactoryControllerDB(load);
-		
+		this.conf=load;
 		
 	}
 
@@ -59,7 +61,7 @@ public class HybridServer {
 	public void start() {
 		ExecutorService threadPool = Executors.newFixedThreadPool(numClient);
 		 if (this.url != null) {
-	            Endpoint.publish(url, new WebServicesImpl(pages));
+	            this.endpoint=Endpoint.publish(url, new WebServicesImpl(this.conf));
 	        }
 		this.serverThread = new Thread() {
 			@Override
@@ -84,7 +86,9 @@ public class HybridServer {
 
 	public void stop() {
 		this.stop = true;
-
+		if(endpoint!=null)
+			this.endpoint.stop();
+		
 		try (Socket socket = new Socket("localhost", SERVICE_PORT)) {
 			// Esta conexión se hace, simplemente, para "despertar" el hilo servidor
 		} catch (IOException e) {

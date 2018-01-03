@@ -17,42 +17,27 @@ import es.uvigo.esei.dai.hybridserver.http.HTTPResponseStatus;
 
 public class Launcher {
 	public static void main(String[] args) throws Exception{
-		HybridServer server= null;
-		File xml= new File("configuration.xml");
-		File validar=new File ("configuracion.xsd");
+		HybridServer server;
+		HTTPResponse response = new HTTPResponse();
 		if(args.length==0) {
-			try{
-			validateXMLSchema(validar,xml);
-				XMLConfigurationLoader loadxml = new XMLConfigurationLoader();
-				Configuration conf=loadxml.load(xml);
-				conf.toString();
-				server = new HybridServer(conf);
-			}catch(Exception E){
-				System.err.println("El XML no es válido");
-			}
-		}else {
-			server=new HybridServer();
-			}
-		
-		server.start();
-	}
-
-	private static boolean validateXMLSchema(File validar, File xml) throws SAXException {
-		SchemaFactory schemaFactory = SchemaFactory
-			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);	
-		  try{
-			  Schema schema = schemaFactory.newSchema(validar);
-			  Validator validator = schema.newValidator();
-			  Source xmlFile = new StreamSource(xml);
-			  validator.validate(xmlFile);
-			  return true;
-			
-		} catch (Exception e) {
-			HTTPResponse name = new HTTPResponse();
-			name.setStatus(HTTPResponseStatus.S404);
-			return false;
+			server = new HybridServer();
+			server.start();
 		}
+		else if(args.length==1) {
+			Configuration conf=new XMLConfigurationLoader().load((new File (args[0])));
+			if(conf==null) {
+				System.err.println("Ha habido un error en el xml");
+			response.setStatus(HTTPResponseStatus.S404);
+			}
+			server = new HybridServer(conf);
+			server.start();
 		
-	}
+		}
+		else {
+			
+		}
+
 	
+	}
 }
+	

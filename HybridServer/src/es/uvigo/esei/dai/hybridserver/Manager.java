@@ -154,7 +154,7 @@ public class Manager {
 								if(request.getResourceParameters().containsKey("xslt")) {
 									String uuidxslt=request.getResourceParameters().get("xslt");
 									XsltController xsltcontroller=create.createXsltController();
-								if(uuidxslt!=null && xsltcontroller.exist(uuidxslt)) {
+								if(uuidxslt!=null) {
 									XsdController xsdcontroller=create.createXsdController();
 									String uuidxsd=xsltcontroller.getXSD(uuidxslt);
 									String contentxslt=xsltcontroller.getPage(uuidxslt);

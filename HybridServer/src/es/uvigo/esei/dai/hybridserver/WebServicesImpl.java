@@ -1,60 +1,69 @@
 package es.uvigo.esei.dai.hybridserver;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-import es.uvigo.esei.dai.hybridserver.controller.FactoryControllerDB;
-import es.uvigo.esei.dai.hybridserver.controller.HtmlController;
-import es.uvigo.esei.dai.hybridserver.controller.XmlController;
-import es.uvigo.esei.dai.hybridserver.controller.XsdController;
-import es.uvigo.esei.dai.hybridserver.controller.XsltController;
+import es.uvigo.esei.dai.hybridserver.configuration.Configuration;
+import es.uvigo.esei.dai.hybridserver.dao.HTMLDAODB;
+import es.uvigo.esei.dai.hybridserver.dao.XMLDAODB;
+import es.uvigo.esei.dai.hybridserver.dao.XSDDAODB;
+import es.uvigo.esei.dai.hybridserver.dao.XSLTDAODB;
+
 import javax.jws.WebService;
 
 @WebService(endpointInterface ="es.uvigo.esei.dai.hybridserver.WebServices", serviceName = "HybridServerService")
 public class WebServicesImpl implements WebServices{
-	private FactoryControllerDB create;
-	public WebServicesImpl(FactoryControllerDB create) {
-		this.create=create;
+	private HTMLDAODB htmldao;
+	private XSDDAODB xsddao;
+	private XSLTDAODB xsltdao;
+	private XMLDAODB xmldao;
+	public WebServicesImpl(Configuration conf) {
+		try {
+			Connection connect = DriverManager.getConnection(conf.getDbURL(),conf.getDbUser(),conf.getDbPassword());
+			this.xmldao = new XMLDAODB(connect);
+			this.xsddao = new XSDDAODB(connect);
+			this.xsltdao = new XSLTDAODB(connect);
+			this.htmldao=new HTMLDAODB(connect);
+			
+			
+		} catch (SQLException e) {
+			
+		}
+		
 	}
 	@Override
 	public List<String> uuidHTML() throws SQLException {
-		HtmlController htmlcontroller=create.createHTMLController();
-		return htmlcontroller.listPages();
+		return htmldao.listPages();
 	}
 	@Override
 	public List<String> uuidXML() throws SQLException {
-		XmlController xmlcontroller=create.createXmlController();
-		return xmlcontroller.listPages();
+		return xmldao.listPages();
 	}
 	@Override
 	public List<String> uuidXSD() throws SQLException {
-		XsdController xsdcontroller=create.createXsdController();
-		return xsdcontroller.listPages();
+		return xsddao.listPages();
 	}
 	@Override
 	public List<String> uuidXSLT() throws SQLException {
-		XsltController xsltcontroller=create.createXsltController();
-		return xsltcontroller.listPages();
+		return xsltdao.listPages();
 	}
 	@Override
 	public String contentHTML(String uuid) throws SQLException {
-		HtmlController htmlcontroller=create.createHTMLController();
-		return htmlcontroller.getPage(uuid);
+		return htmldao.getPage(uuid);
 	}
 	@Override
 	public String contentXML(String uuid) throws SQLException {
-		XmlController xmlcontroller=create.createXmlController();
-		return xmlcontroller.getPage(uuid);
+		return xmldao.getPage(uuid);
 	}
 	@Override
 	public String contentXSD(String uuid) throws SQLException {
-		XsdController xsdcontroller=create.createXsdController();
-		return xsdcontroller.getPage(uuid);
+		return xsddao.getPage(uuid);
 	}
 	@Override
 	public String contentXSLT(String uuid) throws SQLException {
-		XsltController xsltcontroller=create.createXsltController();
-		return xsltcontroller.getPage(uuid);
+		return xsltdao.getPage(uuid);
 	}
 	
 

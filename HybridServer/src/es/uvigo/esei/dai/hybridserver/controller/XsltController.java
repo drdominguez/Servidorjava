@@ -13,16 +13,16 @@ import es.uvigo.esei.dai.hybridserver.dao.XSLTDAODB;
 public class XsltController {
 
 	private XSLTDAODB xsltdao;
-	private Map<ServerConfiguration, WebServices> remoteServices;
-	public XsltController(Connection connect, remoteServers serv) {
+	private RemoteServers serv;
+	public XsltController(Connection connect, RemoteServers serv) {
 		this.xsltdao = new XSLTDAODB(connect);
-		this.remoteServices=serv.getRemotes();
+		this.serv=serv;
 	}
 
 	public List<String> listPages() throws SQLException {
 		List<String> result=this.xsltdao.listPages();
 		Iterator<String> it;
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry :this.serv.getRemotes().entrySet()) {
 			it=entry.getValue().uuidXSLT().iterator();
 			while(it.hasNext())
 			result.add(it.next())  ;			
@@ -46,7 +46,7 @@ public class XsltController {
 //		content!=null
 //				);
 		if(content==null) {
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.serv.getRemotes().entrySet()) {
 			content = entry.getValue().contentXSLT(uuid);
 			if (content != null)
 				break;

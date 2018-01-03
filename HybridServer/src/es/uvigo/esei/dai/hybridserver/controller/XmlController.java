@@ -13,17 +13,17 @@ import es.uvigo.esei.dai.hybridserver.dao.XMLDAODB;
 public class XmlController {
 
 	private XMLDAODB xmldao;
-	private Map<ServerConfiguration, WebServices> remoteServices;
-	public XmlController(Connection connect,remoteServers serv) {
+	private RemoteServers serv;
+	public XmlController(Connection connect,RemoteServers serv) {
 		this.xmldao = new XMLDAODB(connect);
-		this.remoteServices=serv.getRemotes();
+		this.serv=serv;
 	}
 
 	public List<String> listPages() throws SQLException {
 		
 		List<String> result=this.xmldao.listPages();
 		Iterator<String> it;
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.serv.getRemotes().entrySet()) {
 			it=entry.getValue().uuidXML().iterator();
 			while(it.hasNext())
 			result.add(it.next())  ;			
@@ -48,7 +48,7 @@ public class XmlController {
 //		content!=null
 //				);
 		if(content==null) {
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry :this.serv.getRemotes().entrySet()) {
 			content = entry.getValue().contentXML(uuid);
 			if (content != null)
 				break;

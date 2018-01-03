@@ -13,16 +13,16 @@ public class HtmlController {
 
 
 	HTMLDAODB htmldao;
-	private Map<ServerConfiguration, WebServices> remoteServices;
-	public HtmlController(Connection conect,remoteServers serv) {
+	private RemoteServers serv;
+	public HtmlController(Connection conect,RemoteServers serv) {
 	this.htmldao=new HTMLDAODB(conect);
-	this.remoteServices=serv.getRemotes();
+	this.serv=serv;
 	}
 
 	public List<String> listPages() throws SQLException {
 		List<String> result=this.htmldao.listPages();
 		Iterator<String> it;
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.serv.getRemotes().entrySet()) {
 			it=entry.getValue().uuidHTML().iterator();
 			while(it.hasNext())
 			result.add(it.next())  ;			
@@ -41,12 +41,8 @@ public class HtmlController {
 
 	public String getPage(String uuid) throws SQLException {
 		String content=this.htmldao.getPage(uuid);
-//		this.remoteServices.forEach((k,v) -> 
-//		content=v.contentHTML(uuid),
-//		content!=null
-//				);
 		if(content==null) {
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.serv.getRemotes().entrySet()) {
 			content = entry.getValue().contentHTML(uuid);
 			if (content != null)
 				break;

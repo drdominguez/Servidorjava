@@ -13,16 +13,16 @@ import es.uvigo.esei.dai.hybridserver.dao.XSDDAODB;
 public class XsdController {
 
 	private XSDDAODB xsddao;
-	private Map<ServerConfiguration, WebServices> remoteServices;
-	public XsdController(Connection connect,remoteServers serv) {
+	private RemoteServers serv;
+	public XsdController(Connection connect,RemoteServers serv) {
 		this.xsddao = new XSDDAODB(connect);
-		this.remoteServices=serv.getRemotes();
+		this.serv=serv;
 	}
 
 	public List<String> listPages() throws SQLException {
 		List<String> result=this.xsddao.listPages();
 		Iterator<String> it;
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.serv.getRemotes().entrySet()) {
 			it=entry.getValue().uuidXSD().iterator();
 			while(it.hasNext())
 			result.add(it.next())  ;			
@@ -46,7 +46,7 @@ public class XsdController {
 //		content!=null
 //				);
 		if(content==null) {
-		for (Map.Entry<ServerConfiguration, WebServices> entry : this.remoteServices.entrySet()) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry :  this.serv.getRemotes().entrySet()) {
 			content = entry.getValue().contentXSD(uuid);
 			if (content != null)
 				break;
