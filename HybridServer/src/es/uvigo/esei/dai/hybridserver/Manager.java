@@ -168,7 +168,7 @@ public class Manager {
 											response.putParameter("Content-Type", html.getMime());
 											response.setStatus(HTTPResponseStatus.S200);
 										}else response.setStatus(HTTPResponseStatus.S400);
-											}else response.setStatus(HTTPResponseStatus.S400);
+											}else response.setStatus(HTTPResponseStatus.S404);
 									}else response.setStatus(HTTPResponseStatus.S404);
 								}else {
 								
