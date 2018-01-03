@@ -62,6 +62,10 @@ public class WebServicesImpl implements WebServices{
 		return xsddao.getPage(uuid);
 	}
 	@Override
+	public String getXSD(String uuid) throws SQLException {
+		return xsltdao.getXSD(uuid);
+	}
+	@Override
 	public String contentXSLT(String uuid) throws SQLException {
 		return xsltdao.getPage(uuid);
 	}

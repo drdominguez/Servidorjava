@@ -24,4 +24,6 @@ public interface WebServices {
 	public String contentXSD(String uuid) throws SQLException;
 	@WebMethod
 	public String contentXSLT(String uuid) throws SQLException;
+	@WebMethod
+	public String getXSD(String uuid) throws SQLException;
 }

@@ -41,10 +41,6 @@ public class XsltController {
 
 	public String getPage(String uuid) throws SQLException {
 		String content=this.xsltdao.getPage(uuid);
-//		this.remoteServices.forEach((k,v) -> 
-//		content=v.contentHTML(uuid),
-//		content!=null
-//				);
 		if(content==null) {
 		for (Map.Entry<ServerConfiguration, WebServices> entry : this.serv.getRemotes().entrySet()) {
 			content = entry.getValue().contentXSLT(uuid);
@@ -58,9 +54,22 @@ public class XsltController {
 	
 	}
 
-	public String getXSD(String uuid) {
-		return this.xsltdao.getXSD(uuid);
+	public String getXSD(String uuid) throws SQLException {
+		String content=this.xsltdao.getXSD(uuid);
+		if(content==null) {
+		for (Map.Entry<ServerConfiguration, WebServices> entry : this.serv.getRemotes().entrySet()) {
+			content = entry.getValue().getXSD(uuid);
+			if (content != null)
+				break;
+			
+		}
+		}
+        
+		return content;
+	
 	}
+
+	
 	public boolean exist(String uuid) throws SQLException {
 		return this.xsltdao.exists(uuid);
 	}
