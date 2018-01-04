@@ -17,25 +17,6 @@
  */
 package es.uvigo.esei.dai.hybridserver.http;
 
-public class HTTPParseException extends Exception {
-	private static final long serialVersionUID = 1L;
-
-	public HTTPParseException() {
-	}
-
-	public HTTPParseException(String message) {
-		super(message);
-	}
-
-	public HTTPParseException(Throwable cause) {
-		super(cause);
-	}
-
-	public HTTPParseException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public HTTPParseException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
+public enum HTTPRequestMethod {
+	HEAD, GET, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT;
 }

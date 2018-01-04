@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="MBP-de-Daniel" name="es.uvigo.esei.dai.hybridserver.HybridServerFirstReleaseTestSuite" skipped="0" tests="117" time="1.909" timestamp="2017-10-25T16:11:12">
+<testsuite errors="0" failures="0" hostname="MacBook-Pro-de-Daniel.local" name="es.uvigo.esei.dai.hybridserver.HybridServerSecondReleaseTestSuite" skipped="0" tests="239" time="75.368" timestamp="2018-01-04T00:16:39">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
-    <property name="ant.file.HybridServer" value="/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/build.xml" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="eclipse.pdebuild.templates" value="/Applications/Eclipse.app/Contents/Eclipse/plugins/org.eclipse.pde.build_3.9.300.v20170515-0912/templates" />
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
-    <property name="ant.file.type.HybridServer" value="file" />
     <property name="os.name" value="Mac OS X" />
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/classes" />
     <property name="java.vm.specification.vendor" value="Oracle Corporation" />
@@ -15,9 +13,10 @@
     <property name="report.file" value="test.report" />
     <property name="user.name" value="daniel" />
     <property name="user.language" value="es" />
+    <property name="ant.file.HybridServer - Final" value="/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/build2.xml" />
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib" />
     <property name="ant.project.default-target" value="release" />
-    <property name="ant.project.name" value="HybridServer" />
+    <property name="ant.project.name" value="HybridServer - Final" />
     <property name="java.version" value="1.8.0_144" />
     <property name="user.timezone" value="" />
     <property name="sun.arch.data.model" value="64" />
@@ -32,12 +31,13 @@
     <property name="user.country" value="ES" />
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre" />
     <property name="java.vm.info" value="mixed mode" />
-    <property name="ant.file" value="/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/build.xml" />
-    <property name="os.version" value="10.13" />
+    <property name="ant.file" value="/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/build2.xml" />
+    <property name="os.version" value="10.13.2" />
     <property name="path.separator" value=":" />
     <property name="java.vm.version" value="25.144-b01" />
     <property name="report.dir" value="/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/report" />
     <property name="ant.library.dir" value="/Applications/Eclipse.app/Contents/Eclipse/plugins/org.apache.ant_1.10.1.v20170504-0840/lib" />
+    <property name="ant.file.type.HybridServer - Final" value="file" />
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
     <property name="group" value="Grupo.2.5" />
     <property name="sun.io.unicode.encoding" value="UnicodeBig" />
@@ -52,7 +52,7 @@
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="gopherProxySet" value="false" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner es.uvigo.esei.dai.hybridserver.HybridServerFirstReleaseTestSuite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/test.report.xml crashfile=/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/junitvmwatcher1828127553373502246.properties propsfile=/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/junit5005435417093907348.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner es.uvigo.esei.dai.hybridserver.HybridServerSecondReleaseTestSuite skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/test.report.xml crashfile=/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/junitvmwatcher8753074309762171824.properties propsfile=/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/junit8092547252701552678.properties" />
     <property name="java.class.path" value="/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/bin:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/commons-logging-1.1.3.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/dbunit-2.5.3.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/derby.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/fluent-hc-4.3.5.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/httpclient-4.3.5.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/httpcore-4.3.2.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/java-hamcrest-2.0.0.0.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/junit-4.12.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/mysql-connector-java-5.1.22-bin.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/slf4j-api-1.7.7.jar:/Users/daniel/eclipse-workspace/Servidorjava/HybridServer/lib/slf4j-simple-1.7.7.jar:/Applications/Eclipse.app/Contents/Eclipse/plugins/org.apache.ant_1.10.1.v20170504-0840/lib/ant-launcher.jar:/Applications/Eclipse.app/Contents/Eclipse/plugins/org.apache.ant_1.10.1.v20170504-0840/lib/ant.jar:/Applications/Eclipse.app/Contents/Eclipse/plugins/org.apache.ant_1.10.1.v20170504-0840/lib/ant-junit.jar:/Applications/Eclipse.app/Contents/Eclipse/plugins/org.apache.ant_1.10.1.v20170504-0840/lib/ant-junit4.jar" />
     <property name="ant.version" value="Apache Ant(TM) version 1.10.1 compiled on February 2 2017" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
@@ -75,123 +75,1295 @@
     <property name="java.specification.version" value="1.8" />
     <property name="ant.project.invoked-targets" value="release" />
   </properties>
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.WelcomePageTest" name="testMultipleWelcome" time="0.326" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.WelcomePageTest" name="testWelcome" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Missing method]" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.WelcomePageTest" name="testMultipleWelcome" time="0.521" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.WelcomePageTest" name="testWelcome" time="0.003" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Missing method]" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Missing resource]" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Missing version]" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Missing first line]" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Invalid header]" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Missing new line after header]" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourceChain" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testToString" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPBadRequestsTest" name="test[Missing new line after header]" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourceChain" time="0.002" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testToString" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetHttpVersion" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetHeaderParameters" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourceName" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourcePath" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetContent" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetHeaderParameters" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourceName" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourcePath" time="0.002" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetContent" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetMethod" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetContentLength" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourceParameters" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETRootTest" name="testGetResourceParameters" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetResourceChain" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testToString" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testToString" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetHttpVersion" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetHeaderParameters" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetResourceName" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetResourcePath" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetContent" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetMethod" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetResourceName" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetResourcePath" time="0.002" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetContent" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetMethod" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetContentLength" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourceTest" name="testGetResourceParameters" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetResourceChain" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetResourceChain" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testToString" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetHttpVersion" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetHeaderParameters" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetHeaderParameters" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetResourceName" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetResourcePath" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetContent" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetMethod" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetMethod" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetContentLength" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETResourcesTest" name="testGetResourceParameters" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetResourceChain" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testToString" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetHttpVersion" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetHeaderParameters" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetResourceName" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetResourceName" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetResourcePath" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetContent" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetMethod" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetContentLength" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestGETParametersTest" name="testGetResourceParameters" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetResourceChain" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testToString" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetHttpVersion" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetHeaderParameters" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetResourceChain" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testToString" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetHttpVersion" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetHeaderParameters" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetResourceName" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetResourcePath" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetContent" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetMethod" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetResourcePath" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetContent" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetMethod" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetContentLength" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTOneParameterTest" name="testGetResourceParameters" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetResourceChain" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testToString" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetHttpVersion" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetHeaderParameters" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetResourceName" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetResourceName" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetResourcePath" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetContent" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetMethod" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetContentLength" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetResourceParameters" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTMultipleParametersTest" name="testGetResourceParameters" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetResourceChain" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testToString" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetHttpVersion" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetHttpVersion" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetHeaderParameters" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetResourceName" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetResourcePath" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetContent" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetMethod" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetMethod" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetContentLength" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPRequestPOSTEncodedTest" name="testGetResourceParameters" time="0.001" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPResponseNoContentTest" name="testPrint" time="0.0" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPResponseNoContentTest" name="testPrint" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPResponseNoContentWithHeadersTest" name="testPrint" time="0.001" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPResponseTest" name="testPrint" time="0.0" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week1.HTTPResponseWithHeadersTest" name="testPrint" time="0.0" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testPostInvalidContent" time="0.006" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testPost" time="0.005" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testGetInvalidResource" time="0.111" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testGetInvalidHtmlPage" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testGetHtmlList" time="0.004" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testGetHtmlPage" time="0.016" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testDelete" time="0.005" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week2.ClientRequetsTest" name="testDeleteNonexistentPage" time="0.003" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[0]" time="0.015" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[0]" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[1]" time="0.013" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[1]" time="0.002" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[0]" time="0.025" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[0]" time="0.003" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[1]" time="0.015" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[1]" time="0.003" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[2]" time="0.013" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[2]" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[3]" time="0.015" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[3]" time="0.012" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[3]" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[4]" time="0.013" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[4]" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[5]" time="0.012" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[5]" time="0.003" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[4]" time="0.012" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[4]" time="0.003" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[5]" time="0.016" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[5]" time="0.002" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[6]" time="0.012" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[6]" time="0.003" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[6]" time="0.002" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[7]" time="0.012" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[7]" time="0.003" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[8]" time="0.015" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[8]" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[9]" time="0.014" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[8]" time="0.012" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[8]" time="0.004" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testMultipleWelcome[9]" time="0.013" />
   <testcase classname="es.uvigo.esei.dai.hybridserver.week3.CustomPortTest" name="testWelcome[9]" time="0.002" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testPostInvalidContent" time="0.326" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testPost" time="0.05" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testGetInvalidResource" time="0.028" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testGetInvalidHtmlPage" time="0.028" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testGetHtmlList" time="0.04" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testDelete" time="0.053" />
-  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testDeleteNonexistentPage" time="0.039" />
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testPostInvalidContent" time="0.305" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testPost" time="0.055" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testGetInvalidResource" time="0.032" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testGetInvalidHtmlPage" time="0.036" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testGetHtmlList" time="0.054" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testDelete" time="0.059" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week3.ClientRequestsWithDatabaseTest" name="testDeleteNonexistentPage" time="0.044" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.HTMLClientRequestsWithDatabaseTest" name="testGet" time="0.09" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.HTMLClientRequestsWithDatabaseTest" name="testPost" time="0.058" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.HTMLClientRequestsWithDatabaseTest" name="testGetList" time="0.047" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.HTMLClientRequestsWithDatabaseTest" name="testDelete" time="0.051" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.HTMLClientRequestsWithDatabaseTest" name="testDeleteNonexistentPage" time="0.04" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.HTMLClientRequestsWithDatabaseTest" name="testGetInvalidPage" time="0.04" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XMLClientRequestsWithDatabaseTest" name="testGet" time="0.049" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XMLClientRequestsWithDatabaseTest" name="testPost" time="0.063" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XMLClientRequestsWithDatabaseTest" name="testGetList" time="0.041" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XMLClientRequestsWithDatabaseTest" name="testDelete" time="0.043" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XMLClientRequestsWithDatabaseTest" name="testDeleteNonexistentPage" time="0.034" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XMLClientRequestsWithDatabaseTest" name="testGetInvalidPage" time="0.035" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSDClientRequestsWithDatabaseTest" name="testGet" time="0.041" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSDClientRequestsWithDatabaseTest" name="testPost" time="0.04" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSDClientRequestsWithDatabaseTest" name="testGetList" time="0.041" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSDClientRequestsWithDatabaseTest" name="testDelete" time="0.043" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSDClientRequestsWithDatabaseTest" name="testDeleteNonexistentPage" time="0.033" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSDClientRequestsWithDatabaseTest" name="testGetInvalidPage" time="0.034" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testPostWithBadXSD" time="0.033" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testPost" time="0.043" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testPostWithoutXSD" time="0.027" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testGet" time="0.037" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testGetList" time="0.034" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testDelete" time="0.047" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testDeleteNonexistentPage" time="0.032" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week7.XSLTClientRequestsWithDatabaseTest" name="testGetInvalidPage" time="0.029" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.ConvertedXMLTest" name="testInvalidXSLT" time="0.113" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.ConvertedXMLTest" name="testSimpleGet" time="0.035" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.ConvertedXMLTest" name="testInexistantXSLT" time="0.052" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.ConvertedXMLTest" name="testConvertedGet" time="0.213" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.InvalidConvertedXMLTest" name="testSimpleGet" time="0.093" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.InvalidConvertedXMLTest" name="testConvertedGet" time="0.11" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.InvalidXMLConfigurationLoaderTest" name="testLoad[Missing http parameter]" time="0.006" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.InvalidXMLConfigurationLoaderTest" name="testLoad[Missing database configuration]" time="0.003" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.InvalidXMLConfigurationLoaderTest" name="testLoad[Invalid http port number]" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.InvalidXMLConfigurationLoaderTest" name="testLoad[Invalid number of clients]" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.InvalidXMLConfigurationLoaderTest" name="testLoad[Missing attributes in server]" time="0.001" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week9.XMLConfigurationLoaderTest" name="testLoad" time="0.002" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testHtmlList[Hybrid Server 1]" time="0.793" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testWelcome[Hybrid Server 1]" time="0.231" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsltList[Hybrid Server 1]" time="0.537" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXmlList[Hybrid Server 1]" time="0.512" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsdList[Hybrid Server 1]" time="0.534" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testHtmlList[Hybrid Server 2]" time="0.489" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testWelcome[Hybrid Server 2]" time="0.24" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsltList[Hybrid Server 2]" time="0.482" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXmlList[Hybrid Server 2]" time="0.511" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsdList[Hybrid Server 2]" time="0.427" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testHtmlList[Hybrid Server 3]" time="0.437" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testWelcome[Hybrid Server 3]" time="0.193" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsltList[Hybrid Server 3]" time="0.39" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXmlList[Hybrid Server 3]" time="0.464" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsdList[Hybrid Server 3]" time="0.403" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testHtmlList[Hybrid Server 4]" time="0.404" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testWelcome[Hybrid Server 4]" time="0.188" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsltList[Hybrid Server 4]" time="0.371" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXmlList[Hybrid Server 4]" time="0.396" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.WelcomeAndListsMultipleServersTestCase" name="testXsdList[Hybrid Server 4]" time="0.411" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 1]" time="0.221" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 1]" time="1.612" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testInvalid[Hybrid Server 1]" time="1.01" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 2]" time="0.211" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 2]" time="1.307" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testInvalid[Hybrid Server 2]" time="0.946" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 3]" time="0.168" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 3]" time="1.347" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testInvalid[Hybrid Server 3]" time="0.93" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 4]" time="0.169" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 4]" time="1.233" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.HtmlMultipleServersTestCase" name="testInvalid[Hybrid Server 4]" time="0.93" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 1]" time="0.146" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 1]" time="0.556" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testInvalid[Hybrid Server 1]" time="0.893" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 2]" time="0.145" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 2]" time="0.559" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testInvalid[Hybrid Server 2]" time="0.895" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 3]" time="0.157" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 3]" time="0.656" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testInvalid[Hybrid Server 3]" time="0.863" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetLocales[Hybrid Server 4]" time="0.15" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testGetRemotes[Hybrid Server 4]" time="0.568" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XmlMultipleServersTestCase" name="testInvalid[Hybrid Server 4]" time="0.874" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetLocales[Hybrid Server 1]" time="0.15" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetRemotes[Hybrid Server 1]" time="0.546" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testInvalid[Hybrid Server 1]" time="0.86" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetLocales[Hybrid Server 2]" time="0.146" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetRemotes[Hybrid Server 2]" time="0.646" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testInvalid[Hybrid Server 2]" time="0.895" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetLocales[Hybrid Server 3]" time="0.15" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetRemotes[Hybrid Server 3]" time="0.582" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testInvalid[Hybrid Server 3]" time="0.848" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetLocales[Hybrid Server 4]" time="0.144" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testGetRemotes[Hybrid Server 4]" time="0.537" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsdMultipleServersTestCase" name="testInvalid[Hybrid Server 4]" time="0.848" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetLocales[Hybrid Server 1]" time="0.142" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetRemotes[Hybrid Server 1]" time="0.562" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testInvalid[Hybrid Server 1]" time="0.919" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetLocales[Hybrid Server 2]" time="0.155" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetRemotes[Hybrid Server 2]" time="0.662" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testInvalid[Hybrid Server 2]" time="0.836" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetLocales[Hybrid Server 3]" time="0.146" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetRemotes[Hybrid Server 3]" time="0.531" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testInvalid[Hybrid Server 3]" time="0.902" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetLocales[Hybrid Server 4]" time="0.142" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testGetRemotes[Hybrid Server 4]" time="0.53" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.XsltMultipleServersTestCase" name="testInvalid[Hybrid Server 4]" time="0.852" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXsltTransformations[Hybrid Server 1]" time="1.736" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testInvalidXsltTransformations[Hybrid Server 1]" time="1.235" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXmlTransformations[Hybrid Server 1]" time="0.729" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetLocales[Hybrid Server 1]" time="0.209" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testCrossTransformations[Hybrid Server 1]" time="1.154" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetRemotes[Hybrid Server 1]" time="2.111" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXsltTransformations[Hybrid Server 2]" time="1.637" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testInvalidXsltTransformations[Hybrid Server 2]" time="1.217" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXmlTransformations[Hybrid Server 2]" time="0.751" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetLocales[Hybrid Server 2]" time="0.248" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testCrossTransformations[Hybrid Server 2]" time="1.37" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetRemotes[Hybrid Server 2]" time="2.092" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXsltTransformations[Hybrid Server 3]" time="1.729" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testInvalidXsltTransformations[Hybrid Server 3]" time="1.137" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXmlTransformations[Hybrid Server 3]" time="0.693" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetLocales[Hybrid Server 3]" time="0.182" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testCrossTransformations[Hybrid Server 3]" time="1.134" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetRemotes[Hybrid Server 3]" time="2.248" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXsltTransformations[Hybrid Server 4]" time="1.623" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testInvalidXsltTransformations[Hybrid Server 4]" time="1.113" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testBadXmlTransformations[Hybrid Server 4]" time="0.69" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetLocales[Hybrid Server 4]" time="0.177" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testCrossTransformations[Hybrid Server 4]" time="1.147" />
+  <testcase classname="es.uvigo.esei.dai.hybridserver.week11.TransformedMultipleServersTestCase" name="testGetRemotes[Hybrid Server 4]" time="2.075" />
+  <system-out><![CDATA[05b88faa-6909-11e4-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-11e4-aadc-685b35c84fb4
+e5b64c34-636c-11e4-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-11e4-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-11e4-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-11e4-b729-685b35c84fb4
+05b88faa-6909-11e4-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-11e4-aadc-685b35c84fb4
+e5b64c34-636c-11e4-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-11e4-b729-685b35c84fb4
+05b88faa-6909-11e4-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-11e4-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+e5b64c34-636c-1111-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-1111-b729-685b35c84fb4
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-1111-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-1111-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-2222-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-2222-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-2222-3333-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-3333-685b35c84fb4
+05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsdnull
+e5b64c34-636c-2222-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-2222-b729-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-3333-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-3333-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+e5b64c34-636c-2222-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-2222-b729-685b35c84fb4
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-1111-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-1111-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-2222-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-2222-685b35c84fb4
+05b88faa-6909-2222-3333-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-3333-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsdnull
+e5b64c34-636c-1111-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-1111-b729-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-3333-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-3333-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+05b88faa-6909-3333-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-3333-aadc-685b35c84fb4
+e5b64c34-636c-3333-1111-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-1111-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-2222-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-2222-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-2222-3333-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-3333-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-1111-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-1111-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsdnull
+e5b64c34-636c-2222-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-2222-b729-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+e5b64c34-636c-4444-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-b729-685b35c84fb4
+05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-4444-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-1111-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-1111-685b35c84fb4
+e5b64c34-636c-4444-2222-685b35c84fb4
+Este es el xsde5b64c34-636c-4444-2222-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-2222-3333-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-3333-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-4444-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-1111-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-1111-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-1111-aadc-685b35c84fb4
+Este es el xsdnull
+e5b64c34-636c-2222-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-2222-b729-685b35c84fb4
+Este es el xsdnull
+05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-2222-aadc-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+e5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsde5b64c34-636c-3333-b729-685b35c84fb4
+Este es el xsdnull
+Este es el xsdnull
+05b88faa-6909-3333-aadc-685b35c84fb4
+Este es el xsd05b88faa-6909-3333-aadc-685b35c84fb4
+]]></system-out>
+  <system-err><![CDATA[Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+Servidor caido
+]]></system-err>
 </testsuite>

@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package es.uvigo.esei.dai.hybridserver.configuration;
+package es.uvigo.esei.dai.hybridserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,30 +27,15 @@ public class Configuration {
 	private String dbUser;
 	private String dbPassword;
 	private String dbURL;
-	
 	private List<ServerConfiguration> servers;
-	
+
 	public Configuration() {
-		this(
-			8888,
-			50,
-			null,
-			"hsdb",
-			"hsdbpass",
-			"jdbc:mysql://localhost:3306/hstestdb",
-			new ArrayList<ServerConfiguration>()
-		);
+		this(8888, 50, null, "hsdb", "hsdbpass", "jdbc:mysql://localhost:3306/hstestdb",
+				new ArrayList<ServerConfiguration>());
 	}
-	
-	public Configuration(
-		int httpPort,
-		int numClients,
-		String webServiceURL,
-		String dbUser,
-		String dbPassword,
-		String dbURL,
-		List<ServerConfiguration> servers
-	) {
+
+	public Configuration(int httpPort, int numClients, String webServiceURL, String dbUser, String dbPassword,
+			String dbURL, List<ServerConfiguration> servers) {
 		this.httpPort = httpPort;
 		this.numClients = numClients;
 		this.webServiceURL = webServiceURL;
@@ -59,8 +44,6 @@ public class Configuration {
 		this.dbURL = dbURL;
 		this.servers = servers;
 	}
-
-
 
 	public int getHttpPort() {
 		return httpPort;
